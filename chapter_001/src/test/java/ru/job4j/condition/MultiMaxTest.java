@@ -11,11 +11,5 @@ public class MultiMaxTest {
         int result1 = check.max(1, 4, 2);
         assertThat(result1, is(4));
     }
-
-    @Test
-    public void whenFirstMax() {
-        MultiMax check = new MultiMax();
-        int result = check.max(5, 4, 2);
-        assertThat(result, is(5));
-    }
 }
+
