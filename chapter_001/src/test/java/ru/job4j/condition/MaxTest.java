@@ -6,13 +6,18 @@ import static org.junit.Assert.assertThat;
 
 public class MaxTest {
     @Test
-    public void whenMax1To2Then2() {
-        int result = Math.max(1, 2);
-        assertThat(result, is(2));
+    public void whenMax2To1Then2() {
+        int first = Max.max(4, 1);
+        assertThat(first, is(4));
     }
     @Test
-    public void whenMax13To13Then13(){
-        int result = Math.max(13, 13);
-        assertThat(result, is(13));
+    public void whenMax1To2Then2(){
+        int second = Math.max(1, 2);
+        assertThat(second, is(2));
+    }
+    @Test
+    public void whenMax4To4Then4(){
+        int equals = Max.max(4, 4);
+        assertThat(equals, is(4));
     }
 }
