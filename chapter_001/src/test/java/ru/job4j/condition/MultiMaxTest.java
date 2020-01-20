@@ -8,8 +8,8 @@ public class MultiMaxTest {
     @Test
     public void whenSecondMax() {
         MultiMax check = new MultiMax();
-        int result1 = check.max(1, 4, 2);
-        assertThat(result1, is(4));
+        int result = check.max(1, 4, 2);
+        assertThat(result, is(4));
     }
 }
 
