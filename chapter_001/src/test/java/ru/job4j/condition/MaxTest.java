@@ -12,7 +12,7 @@ public class MaxTest {
     }
     @Test
     public void whenMax1To2Then2(){
-        int second = Math.max(1, 2);
+        int second = Max.max(1, 2);
         assertThat(second, is(2));
     }
     @Test
