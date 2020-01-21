@@ -8,8 +8,8 @@ public class SqMaxTest {
     @Test
     public void SqMax() {
         SqMax check = new SqMax();
-        int result = check.max(4, 2, 7, 3);
-        assertThat(result, is(7));
+        int result = check.max(4, 2, 7, 8);
+        assertThat(result, is(8));
     }
 }
 
