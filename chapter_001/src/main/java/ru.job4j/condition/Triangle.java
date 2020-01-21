@@ -6,7 +6,6 @@ public class Triangle {
         boolean yes = (ab+bc)>bc;
         boolean yep = (ac+bc)>ab;
         boolean yea = (ab+bc)>ac;
-        boolean no = (ab+bc)<bc;
-        return false;
+        return yes && yep && yea; // && - Логическое И !Если все три условия выполняются то вернется true иначе false!!!
     }
 }
