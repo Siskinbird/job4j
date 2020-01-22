@@ -13,6 +13,6 @@ public class TriangleTest {
     @Test
     public void whenNoExist() {
         boolean result = Triangle.exist(2.0, 2.0, 22.0);
-        assertThat(result, is(true));
+        assertThat(result, is(false));
     }
 }
