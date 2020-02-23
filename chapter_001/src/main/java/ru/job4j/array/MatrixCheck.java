@@ -23,7 +23,7 @@ public class MatrixCheck {
                 result = false;
                 break;
             }
-            System.out.println(board[i][2]);
+            System.out.println(board[i][column]);
         }
 
         return result;
