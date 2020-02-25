@@ -1,13 +1,17 @@
 package ru.job4j.array;
-/*
-6.7.1. Моно строка и столбец в матрице.[#221823]
- */
+
+/**
+ * MatrixCheck task.
+ * @author  Chizhov Dmitry dima@chig@gmail.com
+ * @version 1.00
+ * @since 25.02.2020
+ **/
 
 public class MatrixCheck {
     public static boolean monoHorizontal(char[][] board, int row) { // создаем метод
         boolean result = true;                                    // ждём результат
         for ( int i = 0 ; i<board.length ; i++) {               //диапазон счетчика цыкла строки
-            if (board[row][i] == i ) {                        // условие продвижения по строке с индексом row и столбцам i++
+            if (board[row][i] == row ) {                        // условие продвижения по строке с индексом row и столбцам i++
                 result = false;                             // если условие не выполняется завершаем цыкл, возвращаем false
                 break;                                    // прерыватель цыкла
             }
@@ -19,7 +23,7 @@ public class MatrixCheck {
     public static boolean monoVertical(char[][] board, int column) {  // те же яйца только в профиль!
         boolean result = true;
         for ( int i = 0 ; i<board.length ; i++) {
-            if (board[i][column] == i) { // условие продвижения по столбцу с индексом column и строке i++
+            if (board[i][column] == column) {                      // условие продвижения по столбцу с индексом column и строке i++
                 result = false;
                 break;
             }
@@ -28,4 +32,5 @@ public class MatrixCheck {
 
         return result;
     }
+
 }

@@ -26,4 +26,5 @@ public class MatrixCheckTest {
         boolean result = MatrixCheck.monoVertical(input, 2);
         assertThat(result, is(true));
     }
+
 }
