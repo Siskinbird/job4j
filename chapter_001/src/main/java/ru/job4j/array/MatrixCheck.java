@@ -9,18 +9,18 @@ package ru.job4j.array;
 
 public class MatrixCheck {
     /**
-     * @method Моно строка в матрице
      * @param board
      * @param row
      * @return result
+     * @method Моно строка в матрице
      **/
 
     public static boolean monoHorizontal(char[][] board, int row) { // создаем метод
         boolean result = true;                                    // ждём результат
-        for ( int i = 0 ; i<board.length ; i++) {               //диапазон счетчика цыкла строки
-            if (board[row][i] == row ) {                        // условие продвижения по строке с индексом row и столбцам i++
-                result = false;                             // если условие не выполняется завершаем цыкл, возвращаем false
-                break;                                    // прерыватель цыкла
+        for (int i = 0; i < board.length; i++) {               //диапазон счетчика цыкла строки
+            if (board[row][i] != board[row][0]) {             // Сравниваем символ по координатам row и i с символом 'X'
+                result = false;                             // Если по координатам row и i  нет 'X', возвращаем false
+                break;                                    // прерыватель цыкла, выходим, всё кончено
             }
             System.out.print(board[row][i] + "  ");     // ручной тест , для себя, так как true очень обширное понятие, а так я вижу что творю
         }
@@ -29,18 +29,18 @@ public class MatrixCheck {
     }
 
     /**
-     * @method Моно столбец в матрице
      * @param board
      * @param column
      * @return result
+     * @method Моно столбец в матрице
      */
 
     public static boolean monoVertical(char[][] board, int column) {  // те же яйца только в профиль!
         boolean result = true;
-        for ( int i = 0 ; i<board.length ; i++) {
-            if (board[i][column] == column) {                      // условие продвижения по столбцу с индексом column и строке i++
-                result = false;
-                break;
+        for (int i = 0; i < board.length; i++) {
+            if (board[i][column] != board[0][column]) {   // Сравниваем символ по координатам  i и column  с символом 'X'
+                result = false;                          // Если по координатам  i и column нет 'X', возвращаем false
+                break;                                  // прерыватель цыкла, выходим, всё кончено
             }
             System.out.println(board[i][column]);
         }
@@ -49,17 +49,32 @@ public class MatrixCheck {
     }
 
     /**
-     * @method Массив из диагонали матрицы
      * @param board
      * @return rsl
+     * @method Массив из диагонали матрицы
      */
     public static char[] extractDiagonal(char[][] board) {
         char[] rsl = new char[board.length];
-        int i, j = 0;
-        for (i = 0; i <board.length; i++) {
-            rsl[j] = board[i][j];
-            j++;
+        for (int i = 0 ;i<board.length; i++ ) {
+            rsl[i] = board[i][i];
         }
-            return rsl;
-        }
+        return rsl;
     }
+
+    /**
+     * @method Выигрышные комбинации
+     * @param board
+     * @return result
+     */
+
+   // public static boolean isWin(char[][] board) {
+   //     boolean result = false;
+     //   for ( int index = 0 ; index<=5;index++ ){
+       //     if (...){
+         //       result = true;
+           //     break;
+            //}
+        //}
+       // return result;
+    // }
+}
