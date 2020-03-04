@@ -3,8 +3,8 @@ package ru.job4j.array;
 public class Square {
     public static int[] calculate(int bound) {
         int[] rst = new int[bound]; // Массив данных по имени rst
-       for (int x = 0 ; x < bound; x++) { //условие цикла
-           rst[x] = x*x;         // возведение в квадрат и запись в массив
+       for (int x = 0; x < bound; x++) { //условие цикла
+           rst[x] = x * x;         // возведение в квадрат и запись в массив
        }
         return rst;
     }

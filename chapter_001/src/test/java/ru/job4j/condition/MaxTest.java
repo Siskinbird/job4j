@@ -11,12 +11,12 @@ public class MaxTest {
         assertThat(first, is(4));
     }
     @Test
-    public void whenMax1To2Then2(){
+    public void whenMax1To2Then2() {
         int second = Max.max(1, 2);
         assertThat(second, is(2));
     }
     @Test
-    public void whenMax4To4Then4(){
+    public void whenMax4To4Then4() {
         int equals = Max.max(4, 4);
         assertThat(equals, is(4));
     }

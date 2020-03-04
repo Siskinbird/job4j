@@ -14,14 +14,14 @@ public class DefragmentTest {
     }
     @Test
     public void single1FirstNull() {
-        String[] input = {null, "I" , "wanna"};
+        String[] input = {null, "I", "wanna"};
         String[] compressed = Defragment.compress(input);
         String[] expected = {"I", "wanna",  null};
         assertThat(compressed, is(expected));
     }
     @Test
     public void single2FirstNull() {
-        String[] input = {null, "I" , "wanna", "be", null};
+        String[] input = {null, "I", "wanna", "be", null};
         String[] compressed = Defragment.compress(input);
         String[] expected = {"I", "wanna", "be", null, null};
         assertThat(compressed, is(expected));
