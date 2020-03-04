@@ -6,4 +6,4 @@ package ru.job4j.calculate;
  * @author Dmitrii Chizhov (dimachig@gmail.com)
  * @version $kHz$
  * @since 12.02.2020
- */
+ **/
