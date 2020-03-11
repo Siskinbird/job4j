@@ -1,4 +1,4 @@
-package oop;
+package ru.job4j.oop;
 
 /**
  * Тренеруемся на кошках
