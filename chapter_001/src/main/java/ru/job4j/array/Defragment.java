@@ -7,19 +7,19 @@ public class Defragment {
      * @author Chizhov Dmitry (dima@chig@gmail.com)
      * @version 13.0
      * @since 26.02.2020 - 04.03.2020
+     * @method compress Дефрагментация массива
      **/
     public static String[] compress(String[] array) {
         for (int index = 0; index < array.length; index++) {
             if (array[index] == null) {
                 int point = index;
-                while (point < array.length) { // Его трогать не надо
-                    if (array[point] != null) { // Тебе надо проверить что элемент массив с индексом Point не равен null
-                        array[index] = array[point]; // если это так. то переставить его с index
+                while (point < array.length) {
+                    if (array[point] != null) {
+                        array[index] = array[point];
                         array[point] = null;
                         index++;
                     }
                     point++;
-                                        //если нет. то увеличить на 1 и проверить заново
                 }
             }
             System.out.print(array[index] + " ");

@@ -1,16 +1,24 @@
 package ru.job4j.array;
+/**
+ * Min task.
+ * @author  Chizhov Dmitry dima@chig@gmail.com
+ * @version 1.00
+ * @since 05.02.2020
+ **/
 
 public class Min {
+    /**
+     * @param array
+     * @return min
+     * Поиск минимального значения
+     */
     public static int findMin(int[] array) {
         int min = array[0];
-        for (int index = 0; index < array.length; index++) { // диапазон цыкла от 0 до длинны массива, шаг 1
-           if (min > array[index]) { //если условие выполняется
-               min = array[index]; // записываем в переменную минимум значение индекса
-               // возвращаем измененное значение минимума
-               // шагаем цикл с новым минимумом
+        for (int index = 0; index < array.length; index++) {
+           if (min > array[index]) {
+               min = array[index];
            }
         }
-        return min; // возвращаем значение минимума в конце цикла
+        return min;
     }
 }
-//Profit :)
