@@ -12,7 +12,6 @@ public class DummyDic {
    public static void main(String[] args) {
        DummyDic say = new DummyDic();
        String eng = say.engToRus("переменная");
-
        System.out.println(eng);
     }
 }
