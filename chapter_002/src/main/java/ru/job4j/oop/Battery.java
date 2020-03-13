@@ -22,9 +22,6 @@ public class Battery {
         this.load = this.load + another.load;
         another.load = 0;
     }
-    //public void pour(Jar another) {
-    //        this.value = this.value + another.value;
-    //        another.value = 0;
     /**
      * Мэйн
      */
