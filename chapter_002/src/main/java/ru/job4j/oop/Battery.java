@@ -19,9 +19,12 @@ public class Battery {
      * @param another
      */
     public void exchange(Battery another) {
-        this.load = this.load - another.load;
-        another.load = another.load + another.load;
+        this.load = this.load + another.load;
+        another.load = 0;
     }
+    //public void pour(Jar another) {
+    //        this.value = this.value + another.value;
+    //        another.value = 0;
     /**
      * Мэйн
      */
@@ -31,5 +34,6 @@ public class Battery {
         System.out.println("first : " + first.load + " %" + ". second : " + second.load + " %");
         first.exchange(second);
         System.out.println("first : " + first.load + " %" + ". second : " + second.load + " %");
-    }
+        System.out.println("И снова с " + first.load + " % заряда побеждает партия Единая Россия");
+    } // ХА! Шутка) Чего не смеётесь? Не смешно? ЭТО РОССИЯ!
 }
