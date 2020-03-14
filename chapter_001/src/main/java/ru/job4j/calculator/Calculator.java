@@ -1,24 +1,30 @@
 package ru.job4j.calculator;
-
+/**
+ * Class Класс для вычисления арефметических операций + - / ^
+ * @author Dmitry Chizhov dimachig@gmail.com
+ * @since 10.01.20
+ */
 public class Calculator {
-    /**
-     * Class Класс для вычисления арефметических операций + - / ^
-     * @author Dmitry Chizhov dimachig@gmail.com
-     * @param first
-     * @param second
-     * @since 10.01.20
-     */
-
     /**
      * Сложение
      * @param first Первый параметр
      * @param second Второй параметр
      */
-    public static void add(double first, double second) {
-        double result = first + second;
-        System.out.println(first + "+" + second + "=" + result);
+    public double add(double first, double second) {
+        return first + second;
     }
+
     /**
+     * Сложение
+     * @param first Первый параметр
+     * @param second Второй параметр
+     * @param third Третий параметр
+     */
+    public double add(double first, double second, double third) {
+        return add(first, add(second, third));
+
+    }
+     /**
      * Деление
      * @param first Первый параметр
      * @param second Второй параметр
@@ -47,7 +53,8 @@ public class Calculator {
     }
 
     public static void main(String[] agrs) {
-        add(1, 1);
+       Calculator add = new Calculator();
+       System.out.println(add.add(13, 44, 98));
         div(4, 2);
         multiply(2, 1);
         subtract(10, 5);
