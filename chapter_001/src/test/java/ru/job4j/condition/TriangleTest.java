@@ -2,6 +2,7 @@ package ru.job4j.condition;
 
 import org.junit.Test;
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 public class TriangleTest {
@@ -12,7 +13,7 @@ public class TriangleTest {
         Point third = new Point(7, 22);
         Triangle triangle = new Triangle(first, second, third);
         double result = triangle.area();
-        assertThat(result, is(1.4999999999998475));
+        assertEquals(result, 1.499, 0.001);
     }
     @Test
     public void whenNoExist() {
