@@ -20,4 +20,5 @@ public class MaxTest {
         int equals = Max.max(4, 4);
         assertThat(equals, is(4));
     }
+
 }
