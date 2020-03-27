@@ -6,17 +6,25 @@ public class Profession {
     public String education;
     public double birthday;
 
-//public String getName(String name) {
-//}
-//public String getName(String surname) {
+    public String getName(String name) {
+        this.name = name;
+        return name;
+    }
 
-//}
-//public String getEducation(String education) {
+    public String getSurname(String surname) {
+        this.surname = surname;
+        return surname;
+    }
 
-//}
-//public  double getBirthday(double birthday) {
+    public String getEducation(String education) {
+        this.education = education;
+        return education;
+    }
 
-//}
+    public double getBirthday(double birthday) {
+        this.birthday = birthday;
+        return birthday;
+    }
 
 }
 
