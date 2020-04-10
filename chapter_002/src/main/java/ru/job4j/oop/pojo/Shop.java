@@ -1,19 +1,21 @@
 package ru.job4j.oop.pojo;
 
 public class Shop {
-    public Product[] delete(Product[] products, int i) {
-        for (i = 0; i < products.length; i++) {
+    public Product[] delete(Product[] products, int count) {
+        for (int i = 0; i < products.length; i++) {
             Product product = products[i];
             if (product != null) {
                 products[i] = null;
                 products[i] = products[i++];
+
             }
             if (product != null) {
                 System.out.println(product.getName());
             } else {
                 System.out.println("null");
             }
-        } return products;
+        }
+        return products;
     }
 
     public static void main(String[] args) {
