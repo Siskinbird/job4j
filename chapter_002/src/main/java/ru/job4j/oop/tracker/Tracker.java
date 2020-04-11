@@ -59,13 +59,14 @@ public class Tracker {
         }
         return null;
     }
-}
 
- //   public Item[] findByName(String key) {
- //       for (int i = 0; i < items.length; i++) {
- //           if (items[i].equals(key)) {
-//                System.out.println(items[i]);
-//            }
-//        } return items;
-//    }
+    public Item[] findByName(String key) {
+      for (int i = 0; i < position; i++) {
+          if (items[i].getName().equals(key)) {
+              return items;
+          }
+      }
+      return null;
+    }
+}
 
