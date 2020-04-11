@@ -59,6 +59,11 @@ public class Tracker {
         }
         return null;
     }
+    /**
+     * Поиск по имени
+     * @param key
+     * @return возвращает результат поиска
+     */
 
     public Item[] findByName(String key) {
       for (int i = 0; i < position; i++) {
