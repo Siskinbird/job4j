@@ -3,7 +3,7 @@ package ru.job4j.oop.pojo;
 public class Shop {
 
     /**
-     * Удаление ячейки из массива
+     * Удаление ячейки из массива по ее индексу
      * Сдвиг заполненных ячеек на место освобождённых
      * @param products
      * @param index
@@ -16,16 +16,8 @@ public class Shop {
                 products[i] = products[i++];
                 products[i] = null;
             }
+            products[products.length - 1] = null;
         }
         return products;
     }
 }
-
-    //
-    //Для того, чтобы сместить все элементы влево на одну позицию нужно использовать цикл for + index.
-
-     //   products[index] = products[index + 1];
-
-       // После цикла нужно поставить на последнее место в массиве null, чтобы последний и предпоследний элементы не дублировались
-
-      //  products[products.lenght - 1] = null;
