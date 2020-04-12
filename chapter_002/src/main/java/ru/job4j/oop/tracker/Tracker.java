@@ -29,6 +29,7 @@ public class Tracker {
     /**
      * Метод генерирует уникальный ключ для заявки.
      * Так как у заявки нет уникальности полей, имени и описание. Для идентификации нам нужен уникальный ключ.
+     *
      * @return Уникальный ключ.
      */
 
@@ -39,6 +40,7 @@ public class Tracker {
 
     /**
      * Копирует только заполненные ячейки массива, возвращает новую длинну массива
+     *
      * @return Возвращает массив элементов и новый размер.
      */
 
@@ -48,6 +50,7 @@ public class Tracker {
 
     /**
      * Поиск по id
+     *
      * @param id
      * @return возвращает результат поиска
      */
@@ -59,14 +62,20 @@ public class Tracker {
         }
         return null;
     }
+
     /**
      * Поиск по имени
      * @param key
-     * @return возвращает результат поиска
+     * @return возвращает результат поиска или пустой массив.
      */
 
     public Item[] findByName(String key) {
-        return Arrays.copyOf(items, position);
+        for (int i = 0; i < position; i++) {
+            if (items[i].getName().equals(key)) {
+                return Arrays.copyOf(items, position);
+            }
+        }
+        return new Item[0];
     }
 }
 
