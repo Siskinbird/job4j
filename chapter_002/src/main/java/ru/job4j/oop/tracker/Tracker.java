@@ -69,13 +69,17 @@ public class Tracker {
      * @return возвращает результат поиска или пустой массив.
      */
 
-    public Item[] findByName(String key) {
-        for (int i = 0; i < position; i++) {
-            if (items[i].getName().equals(key)) {
-                return Arrays.copyOf(items, position);
+    public Item findByName(String key) {
+        Item item = null;
+        for (int index = 0; index < position; index++) {
+            Item current = items[index];
+            if (current.getName().equals(key)) {
+                item = current;
+                break;
             }
         }
-        return new Item[0];
+        return item;
     }
+
 }
 
