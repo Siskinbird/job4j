@@ -71,11 +71,16 @@ public class Tracker {
      */
 
     public Item[] findByName(String key) {
-        for (int i = 0; i < position; i++) {
-            if (items[i].getName().equals(key)) {
-                return items;
-            }
-
-        }return Arrays.copyOf(items, position);
+        Item[] found = new Item[position];                  // Создаю массив длинной с position
+        int counter = 0;                                   // счетчик "подходящих" заявок
+        for (int index = 0; index < position; index++) {  // перебераю массив
+            Item current = items[index];                 // присваиваю current значение items[index]
+            if (current.getName().equals(key)) {        // сравниваю ячейку массива с параметром key
+                found[counter] = current;              // если совпадение найдено , то записываю значение current в массив found[counter]
+                return Arrays.copyOf(found, position);// полученный массив found обрезаю до position
+            }                                        //
+        }                                           //
+        return items;                              //Если совпадений не найденно, возвращаю пустой массив
     }
 }
+// Спасибо за терпение, правда)
