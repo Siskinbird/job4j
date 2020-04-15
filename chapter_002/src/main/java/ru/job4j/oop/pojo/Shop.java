@@ -6,15 +6,10 @@ public class Shop {
         for (i = count; i < products.length; i++) {
             Product product = products[i];
             if (product != null) {
-                products[i] = null;
                 products[i] = products[i++];
-                count++;
+                products[i] = null;
             }
-            if (product != null) {
-                System.out.println(product.getName());
-            } else {
-                System.out.println("null");
-            }
+            products[products.length - 1] = null;
         }
         return products;
     }
