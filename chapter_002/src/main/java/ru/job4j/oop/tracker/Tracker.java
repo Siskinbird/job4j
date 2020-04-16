@@ -8,7 +8,6 @@ public class Tracker {
      * Массив для хранения заявок.
      */
     private final Item[] items = new Item[100];
-
     /**
      * Указатель ячейки для новой заявки.
      */
@@ -32,7 +31,6 @@ public class Tracker {
      *
      * @return Уникальный ключ.
      */
-
     private String generateId() {
         Random rm = new Random();
         return String.valueOf(rm.nextLong() + System.currentTimeMillis());
@@ -43,9 +41,26 @@ public class Tracker {
      *
      * @return Возвращает массив элементов и новый размер.
      */
-
     public Item[] findAll() {
         return Arrays.copyOf(items, position);
+    }
+
+    /**
+     * Поиск индекса заявки по id
+     *
+     * @param id
+     * @return Возвращает результат поиска.
+     */
+
+    private int indexOf(String id) {
+        int rsl = -1;
+        for (int index = 0; index < position; index++) {
+            if (items[index].getId().equals(id)) {
+                rsl = index;
+                break;
+            }
+        }
+        return rsl;
     }
 
     /**
@@ -55,12 +70,8 @@ public class Tracker {
      * @return возвращает результат поиска
      */
     public Item findById(String id) {
-        for (int i = 0; i < position; i++) {
-            if (items[i].getId().equals(id)) {
-                return items[i];
-            }
-        }
-        return null;
+        int index = indexOf(id);
+        return index != -1 ? items[index] : null;
     }
 
     /**
@@ -77,10 +88,51 @@ public class Tracker {
             Item current = items[index];                 // присваиваю current значение items[index]
             if (current.getName().equals(key)) {        // сравниваю ячейку массива с параметром key
                 found[counter] = current;              // если совпадение найдено , то записываю значение current в массив found[counter]
-                return Arrays.copyOf(found, position);// полученный массив found обрезаю до position
+                counter++ ;                           // полученный массив found обрезаю до position
             }                                        //
         }                                           //
-        return items;                              //Если совпадений не найденно, возвращаю пустой массив
+        return Arrays.copyOf(found, counter);                              //Если совпадений не найденно, возвращаю пустой массив
+    }
+
+    /**
+     * Перезапись ячейки с сохранением id
+     *
+     * @param id
+     * @param item
+     */
+    public boolean replace(String id, Item item) { // Переписать ( айди, объект)
+        int index = indexOf(id); // ищем индекс по входящей строке айди (534872648)!
+        items[index] = item;     // записываем в ячейку массива с индексом найденным по входящему айди(534872648)
+        return true;
+
+
     }
 }
-// Спасибо за терпение, правда)
+
+
+    //Метод indexOf нужно использовать в методе replace.
+    //
+    //Весь метод replace будет состоять из 3 строчек кода.
+    //
+    //1. Найти индекс ячейки по id. indexOf(id)
+    //
+    //2. Проставить id с item. При замене нужно сохранять старый id.
+    //
+    //3. Записать в ячейку с найденным индекс объект item. Это входящий параметр.
+
+    //for (int i = 0; i < position; i++) {
+         //   if (items[i].getId().equals(id)) {
+        //       return items[i];
+        //    }
+       // }
+       // return null;
+   // }
+    //public Item findById(String id) {
+    //    // Находим индекс
+
+    //    // Если индекс найден возвращаем item, иначе null
+    //    return index != -1 ? items[index] : null;
+    //}
+
+
+
