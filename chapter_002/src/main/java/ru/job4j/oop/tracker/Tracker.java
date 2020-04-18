@@ -91,7 +91,7 @@ public class Tracker {
                 counter++ ;                           // полученный массив found обрезаю до position
             }                                        //
         }                                           //
-        return Arrays.copyOf(found, counter);                              //Если совпадений не найденно, возвращаю пустой массив
+        return Arrays.copyOf(found, counter);      //Если совпадений не найденно, возвращаю пустой массив
     }
 
     /**
@@ -108,31 +108,6 @@ public class Tracker {
 
     }
 }
-
-
-    //Метод indexOf нужно использовать в методе replace.
-    //
-    //Весь метод replace будет состоять из 3 строчек кода.
-    //
-    //1. Найти индекс ячейки по id. indexOf(id)
-    //
-    //2. Проставить id с item. При замене нужно сохранять старый id.
-    //
-    //3. Записать в ячейку с найденным индекс объект item. Это входящий параметр.
-
-    //for (int i = 0; i < position; i++) {
-         //   if (items[i].getId().equals(id)) {
-        //       return items[i];
-        //    }
-       // }
-       // return null;
-   // }
-    //public Item findById(String id) {
-    //    // Находим индекс
-
-    //    // Если индекс найден возвращаем item, иначе null
-    //    return index != -1 ? items[index] : null;
-    //}
 
 
 
