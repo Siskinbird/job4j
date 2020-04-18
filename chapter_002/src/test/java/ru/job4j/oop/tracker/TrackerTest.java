@@ -8,6 +8,28 @@ import static org.junit.Assert.*;
 
 public class TrackerTest {
     @Test
+    public void when3NameNewMass() {
+        Tracker tracker = new Tracker();
+        Item name = new Item("Anton");
+        Item name1 = new Item("Igar");
+        Item name2 = new Item("Egor");
+        tracker.add(name);
+        tracker.add(name1);
+        tracker.add(name2);
+        Item[] result = tracker.findAll();
+        assertThat(result, is(new Item[]{name, name1, name2 }));
+    }
+    @Test
+    public void whenNoItems() {
+        Tracker tracker = new Tracker();
+        Item[] result = tracker.findAll();
+        assertThat(result, is(new Item[]{}));
+    }
+    @Test
+    public void whenIdFound(){
+
+    }
+    @Test
     public void whenAddNewItemThenTrackerHasSameItem() {
         Tracker tracker = new Tracker();
         Item item = new Item("test1");
