@@ -95,17 +95,14 @@ public class Tracker {
     }
 
     /**
-     * Перезапись ячейки с сохранением id
-     *
+     * Замена заявки id
      * @param id
      * @param item
      */
-    public boolean replace(String id, Item item) { // Переписать ( айди, объект)
-        int index = indexOf(id); // ищем индекс по входящей строке айди (534872648)!
-        items[index] = item;     // записываем в ячейку массива с индексом найденным по входящему айди(534872648)
-        return true;
+    public boolean replace(String id, Item item) {     // Переписать ( айди, объект)
+        items[indexOf(id)] = item;                     // ищем индекс по входящей строке айди (строка)!
 
-
+        return
     }
 }
 
