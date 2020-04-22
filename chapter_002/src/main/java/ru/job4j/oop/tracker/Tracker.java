@@ -88,7 +88,7 @@ public class Tracker {
             Item current = items[index];                 // присваиваю current значение items[index]
             if (current.getName().equals(key)) {        // сравниваю ячейку массива с параметром key
                 found[counter] = current;              // если совпадение найдено , то записываю значение current в массив found[counter]
-                counter++ ;                           // полученный массив found обрезаю до position
+                counter++;                           // полученный массив found обрезаю до position
             }                                        //
         }                                           //
         return Arrays.copyOf(found, counter);      //Если совпадений не найденно, возвращаю пустой массив
@@ -96,13 +96,42 @@ public class Tracker {
 
     /**
      * Замена заявки id
+     *
      * @param id
      * @param item
+     * @return
      */
-    public boolean replace(String id, Item item) {     // Переписать ( айди, объект)
-        items[indexOf(id)] = item;                     // ищем индекс по входящей строке айди (строка)!
 
-        return
+    //Что не так?
+    public boolean replace(String id, Item item) { // Параметры
+        boolean result = false;
+        int index = indexOf(id);                // ищем индекс по id
+        if (index != -1) {                      // если находим
+            items[index] = item;               // то записываем в ячейку с найденым индексом item
+            item.setId(id);                  // устанавливаем id
+            return true;
+        }
+        return result;
+    }
+
+    /**
+     * Удаление заявки id
+     *
+     * @param id
+     */
+
+    public boolean delete(String id) {
+        boolean result = false;
+        int index = indexOf(id);
+        int start = index + 1;
+        int distPos = index;
+        int size = position - index;
+        if(index != -1) {
+            System.arraycopy(items, start, items, distPos, size);
+            items[position - 1] = null;
+            position--;
+        }
+        return result;
     }
 }
 

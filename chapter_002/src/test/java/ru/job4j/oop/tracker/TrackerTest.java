@@ -3,6 +3,7 @@ package ru.job4j.oop.tracker;
 import org.junit.Test;
 
 
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
@@ -123,6 +124,20 @@ public class TrackerTest {
             tracker.replace(id, bugWithDesc);
             assertThat(tracker.findById(id).getName(), is("Bug with description"));
         }
+    /**
+     * Тест на метод удаления заявки
+     * tracker.delete
+     * Заявка удалена
+     */
+    @Test
+    public void whenDelete() {
+        Tracker tracker = new Tracker();
+        Item bug = new Item("Bug");
+        tracker.add(bug);
+        String id = bug.getId();
+        tracker.delete(id);
+        assertThat(tracker.findById(id), is(nullValue()));
+    }
     }
 
 
