@@ -4,6 +4,11 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class MagicBall {
+    /**
+     * Ответы на все вопросы
+     * @param args
+     * Возвращает результат работы великого разума.
+     */
     public static void main(String[] args) {
         Scanner question = new Scanner(System.in);
         System.out.print("Я великий Солнцеликий. Я код вселенной, её начало и закат, подумай хорошенько, что ты хочешь узнать? ");
