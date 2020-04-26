@@ -24,12 +24,13 @@ public class StartUI {
                 System.out.println("=== Edit item ====");
                 System.out.println("Enter id: ");
                 String id = scanner.nextLine();
-                System.out.println("Enter name: ");
+                System.out.println("Enter new name: ");
                 String name = scanner.nextLine();
                 Item item = new Item(name);
                 if(tracker.replace(id, item)){
-                    System.out.println("Item deleted");
-                }
+                    System.out.println("Item replase");
+
+                } else
                 System.out.println("Error: Item doesn't exist");
             }
             else if (select == 3) {
@@ -38,9 +39,8 @@ public class StartUI {
                 String nameToDel = scanner.nextLine();
                 if(tracker.delete(nameToDel)){
                     System.out.println("Item deleted");
-                }
+                } else
                 System.out.println("Error: Item doesn't exist");
-
             } else if (select == 4) {
                 System.out.println("=== Find item by id ====");
                 System.out.print("Enter Id: ");
@@ -50,8 +50,9 @@ public class StartUI {
                 System.out.println("=== Find item by name ====");
                 System.out.print("Enter name: ");
                 String name = scanner.nextLine();
-                System.out.println(tracker.findById(name));
+                System.out.print("Found name: " + Arrays.toString(tracker.findByName(name)) + "\n");
             } else if (select == 6) {
+                System.out.println("Bye bye.");
                 run = false;
             }
         }
