@@ -6,7 +6,7 @@ public class Item {
 
     @Override
     public String toString() {
-        return  "Id: " + this.id + "; " + "Name: " + this.name + "\n" ;
+        return  "Id: " + this.id + "; " + "Name: " + this.name;
     }
 
     public Item(String name) {
