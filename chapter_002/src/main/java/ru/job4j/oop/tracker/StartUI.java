@@ -1,9 +1,13 @@
 package ru.job4j.oop.tracker;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
+
+
 public class StartUI {
+    /**
+     * Пользовательский интерфейс программы Tracker
+     */
     public void init(Scanner scanner, Tracker tracker) {
         boolean run = true;
         while (run) {
@@ -19,44 +23,52 @@ public class StartUI {
             } else if (select == 1) {
                 System.out.println("=== Show all items ====");
                 System.out.println("All items: ");
-                System.out.println(Arrays.toString(tracker.findAll()));
-            } else if (select == 2){
+                Item[] items = tracker.findAll();
+                for (int i = 0; i < items.length; i++) {
+                    System.out.println(items[i]);
+                }
+            } else if (select == 2) {
                 System.out.println("=== Edit item ====");
                 System.out.println("Enter id: ");
                 String id = scanner.nextLine();
                 System.out.println("Enter new name: ");
                 String name = scanner.nextLine();
                 Item item = new Item(name);
-                if(tracker.replace(id, item)){
-                    System.out.println("Item replase");
+                if (tracker.replace(id, item)) {
+                    System.out.println("Item replaced");
                 } else
-                System.out.println("Error: Item doesn't exist");
-            }
-            else if (select == 3) {
+                    System.out.println("Error: Item doesn't exist");
+            } else if (select == 3) {
                 System.out.println("=== Delete item ====");
                 System.out.print("Enter id: ");
                 String nameToDel = scanner.nextLine();
-                if(tracker.delete(nameToDel)){
+                tracker.delete(nameToDel);
                     System.out.println("Item deleted");
-                } else
-                System.out.println("Error: Item doesn't exist");
             } else if (select == 4) {
                 System.out.println("=== Find item by id ====");
                 System.out.print("Enter Id: ");
                 String idToFiend = scanner.nextLine();
                 System.out.println(tracker.findById(idToFiend));
+                if(tracker.findById(idToFiend) == null){
+                    System.out.println("this item doesn't exist");
+                }
             } else if (select == 5) {
                 System.out.println("=== Find item by name ====");
-                System.out.print("Enter name: ");
+                System.out.println("Enter name: ");
                 String name = scanner.nextLine();
-                System.out.println("Found name: " + Arrays.toString(tracker.findByName(name)));
-            } else if (select == 6) {
+                Item[] items = tracker.findByName(name);
+                for (int i = 0; i < items.length; i++) {
+                    System.out.println("Found name: " + items[i]);
+                }
+            }else if (select == 6) {
                 System.out.println("Bye bye.");
                 run = false;
             }
         }
     }
-
+    /**
+     * Меню интерфейса программы Tracker
+     */
     private void showMenu() {
         System.out.println("0. Add new Item");//
         System.out.println("1. Show all items");
@@ -65,10 +77,10 @@ public class StartUI {
         System.out.println("4. Find item by Id");
         System.out.println("5. Find items by name");
         System.out.println("6. Exit Program");
-
     }
-
-
+    /**
+     * Мэйн метод интерфейса программы Tracker
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Tracker tracker = new Tracker();
