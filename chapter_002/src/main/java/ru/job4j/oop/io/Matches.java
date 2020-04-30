@@ -1,5 +1,7 @@
 package ru.job4j.oop.io;
 
+import ru.job4j.oop.tracker.StartUI;
+
 import java.util.Scanner;
 
 /**
@@ -9,10 +11,7 @@ import java.util.Scanner;
  * @since 1986 All rights reserved ©
  */
 public class Matches {
-
-    public static void main(String[] args) {
-        Scanner player1 = new Scanner(System.in);
-        Scanner player2 = new Scanner(System.in);
+    private void showMenu() {
         System.out.println("Zero Matches III: \"Rise of thunder\"");
         System.out.println("* * *");
         System.out.println("Введите с клавиатуры сколько спичек вы желаете отнять от 1 до 3");
@@ -23,57 +22,30 @@ public class Matches {
         System.out.println("2. Беру две спички!");
         System.out.println("3. Беру три спички!");
         System.out.println("* * *");
+    }
+
+    public static void main(String[] args) {
+        Scanner player1 = new Scanner(System.in);
+        new Matches().showMenu();
         int spichki = 11;
+        String p1 = "Первый игрок";
         while (spichki > 0) {
-
-            System.out.println("Игрок 1. Сколько спичек будем брать?");
+            System.out.println(p1 + ", cколько спичек будем брать?");
             int selectP1 = Integer.valueOf(player1.nextLine());
-
-            System.out.println("Игрок 1 берет " + selectP1 + " спички");
-            System.out.println("--------------------------------------------------------------------------------");
-            if (selectP1 == 1) {
-                spichki = spichki - selectP1;
-                System.out.println("Осталось всего " + spichki + " спичек");
-                System.out.println("--------------------------------------------------------------------------------");
-            }
-            if (selectP1 == 2) {
-                spichki = spichki - selectP1;
-                System.out.println("Осталось всего " + spichki + " спичек");
-                System.out.println("--------------------------------------------------------------------------------");
-            }
-            if (selectP1 == 3) {
-                spichki = spichki - selectP1;
-                System.out.println("Осталось всего " + spichki + " спичек");
-                System.out.println("--------------------------------------------------------------------------------");
-            }
-            if (selectP1 == 0) {
+            System.out.println(p1 + " берет " + selectP1 + " спички");
+            if (selectP1 > 3 || selectP1 < 1) {
                 System.out.println("Не - не - не! Возьмите одну, две или три спички");
+                continue;
             }
-            if (spichki == 0) {
-                System.out.println("Игрок 1 побеждает! Это была великая битва!");
-            }
-            System.out.println("Игрок 2. Сколько спичек будем брать?");
-
-            int selectP2 = Integer.valueOf(player2.nextLine());
-
-            System.out.println("Игрок 2 берет " + selectP2 + " спички");
             System.out.println("--------------------------------------------------------------------------------");
-            if (selectP2 == 2) {
-                spichki = spichki - selectP2;
-                System.out.println("Осталось всего " + spichki + " спичек");
-                System.out.println("--------------------------------------------------------------------------------");
+            spichki = spichki - selectP1;
+            if (spichki <= 0) {
+                System.out.println(p1 + " побеждает! Это была великая битва!");
+                break;
             }
-            if (selectP2 == 3) {
-                spichki = spichki - selectP2;
-                System.out.println("Осталось всего " + spichki + " спичек");
-                System.out.println("--------------------------------------------------------------------------------");
-            }
-            if (selectP2 == 0) {
-                System.out.println("Не - не - не! Возьмите одну, две или три спички");
-            }
-            if (spichki == 0) {
-                System.out.println("Игрок 2 побеждает! Это была великая битва!");
-            }
+            System.out.println("Осталось всего " + spichki + " спичек");
+            System.out.println("--------------------------------------------------------------------------------");
+            p1 = p1.equals("Первый игрок") ? "Второй игрок" : "Первый игрок";
         }
     }
 }
