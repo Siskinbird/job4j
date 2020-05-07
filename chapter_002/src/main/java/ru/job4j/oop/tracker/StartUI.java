@@ -31,26 +31,22 @@ public class StartUI {
                 System.out.println("=== Edit item ====");
                 System.out.println("Enter id: ");
                 String id = scanner.nextLine();
-                if (tracker.findById(id) != null) {
-                    System.out.println("Enter new name: ");
-                    String name = scanner.nextLine();
-                    Item item = new Item(name);
-                    tracker.replace(id, item);
-                        System.out.println("Item replaced");
-                    } else {
-                        System.out.println("Item not found");
-                    }
+                System.out.println("Enter new name: ");
+                String name = scanner.nextLine();
+                Item item = new Item(name);
+                if (tracker.replace(id, item)) {
+                    System.out.println("Item replaced");
+                } else
+                    System.out.println("Error: Item doesn't exist");
             } else if (select == 3) {
                 System.out.println("=== Delete item ====");
                 System.out.print("Enter id: ");
                 String enterId = scanner.nextLine();
-                if (tracker.findById(enterId) != null) {
-                    tracker.delete(enterId);
-                    System.out.println( "Item deleted" );
+                if (tracker.delete(enterId)) {
+                   System.out.println( "Item deleted" );
                 } else {
-                    System.out.println("Item not found");
-                }
-
+                   System.out.println("Item not found");
+              }
             } else if (select == 4) {
                 System.out.println("=== Find item by id ====");
                 System.out.print("Enter Id: ");

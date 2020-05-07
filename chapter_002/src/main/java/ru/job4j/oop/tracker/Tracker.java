@@ -130,6 +130,7 @@ public class Tracker {
             System.arraycopy(items, start, items, distPos, size);
             items[position - 1] = null;
             position--;
+            return true;
         }
         return result;
     }
