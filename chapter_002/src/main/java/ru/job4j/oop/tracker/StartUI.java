@@ -68,7 +68,7 @@ public class StartUI {
         }
     }
     /**
-     * Поиск по имени
+     * Метод поиска заявки по имени
      */
     public static void findName(Input input, Tracker tracker){
         System.out.println("=== Find item by name ====");
