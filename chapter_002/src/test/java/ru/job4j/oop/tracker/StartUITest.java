@@ -16,4 +16,3 @@ public class StartUITest {
         assertThat(created.getName(), is(expected.getName()));
     }
 }
-//for commit
