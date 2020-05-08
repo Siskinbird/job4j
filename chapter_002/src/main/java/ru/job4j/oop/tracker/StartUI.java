@@ -36,8 +36,9 @@ public class StartUI {
                 Item item = new Item(name);
                 if (tracker.replace(id, item)) {
                     System.out.println("Item replaced");
-                } else
+                } else {
                     System.out.println("Error: Item doesn't exist");
+                }
             } else if (select == 3) {
                 System.out.println("=== Delete item ====");
                 System.out.print("Enter id: ");
