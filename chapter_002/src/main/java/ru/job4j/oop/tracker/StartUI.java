@@ -1,59 +1,95 @@
 package ru.job4j.oop.tracker;
 
-
+/**
+ * Пользовательский интерфейс программы Tracker
+ */
 public class StartUI {
     /**
-     * Пользовательский интерфейс программы Tracker
+     * Метод добавления заявки в хранилище
      */
+    public static void createItem(Input input, Tracker tracker) {
+        System.out.println("=== Create a new Item ====");
+        String name = input.askStr("Enter name: ");
+        Item item = new Item(name);
+        tracker.add(item);
+    }
+    /**
+     * Показать все заявки.
+     */
+    public static void allItems (Tracker tracker){
+        System.out.println("=== Show all items ====");
+        System.out.println("All items: ");
+        Item[] items = tracker.findAll();
+        for (Item item : items) {
+            System.out.println(item);
+        }
+    }
+    /**
+     * Перезапись заявки.
+     */
+    public static void renameItem(Input input, Tracker tracker){
+        System.out.println("=== Edit item ====");
+        String id = input.askStr("Enter id: ");
+        String name = input.askStr("Enter new name: ");
+        Item item = new Item(name);
+        if (tracker.replace(id, item)) {
+            System.out.println("Item replaced");
+        } else {
+            System.out.println("Error: Item doesn't exist");
+        }
+    }
+    /**
+     * Метод удаления заявки.
+     */
+    public static void delItem(Input input, Tracker tracker){
+        System.out.println("=== Delete item ====");
+        String enterId = input.askStr("Enter id: ");
+        if (tracker.delete(enterId)) {
+            System.out.println( "Item deleted" );
+        } else {
+            System.out.println("Item not found");
+        }
+    }
+    /**
+     * Поиск по id
+     */
+    public static void findId(Input input, Tracker tracker){
+        System.out.println("=== Find item by id ====");
+        String idToFiend = input.askStr("Enter Id: ");
+        System.out.println(tracker.findById(idToFiend));
+        if(tracker.findById(idToFiend) == null){
+            System.out.println("this item doesn't exist");
+        }
+    }
+    /**
+     * Поиск по имени
+     */
+    public static void findName(Input input, Tracker tracker){
+        System.out.println("=== Find item by name ====");
+        String name = input.askStr("Enter name: ");
+        Item[] items = tracker.findByName(name);
+        for (Item item : items) {
+            System.out.println("Found name: " + item);
+        }
+    }
+
     public void init(Input input, Tracker tracker) {
         boolean run = true;
         while (run) {
             this.showMenu();
-            int select = Integer.valueOf(input.askStr("Select: "));
+            int select = input.askInt("Select: ");
             if (select == 0) {
-                System.out.println("=== Create a new Item ====");
-                String name = input.askStr("Enter Name: ");
-                Item item = new Item(name);
-                tracker.add(item);
+                StartUI.createItem(input, tracker);
             } else if (select == 1) {
-                System.out.println("=== Show all items ====");
-                System.out.println("All items: ");
-                Item[] items = tracker.findAll();
-                for (int i = 0; i < items.length; i++) {
-                    System.out.println(items[i]);
-                }
+                StartUI.allItems(tracker);
             } else if (select == 2) {
-                System.out.println("=== Edit item ====");
-                String id = input.askStr("Enter id: ");
-                String name = input.askStr("Enter new name: ");
-                Item item = new Item(name);
-                if (tracker.replace(id, item)) {
-                    System.out.println("Item replaced");
-                } else {
-                    System.out.println("Error: Item doesn't exist");
-                }
+                StartUI.renameItem(input, tracker);
             } else if (select == 3) {
-                System.out.println("=== Delete item ====");
-                String enterId = input.askStr("Enter id: ");
-                if (tracker.delete(enterId)) {
-                   System.out.println( "Item deleted" );
-                } else {
-                   System.out.println("Item not found");
-              }
+                StartUI.delItem(input, tracker);
             } else if (select == 4) {
-                System.out.println("=== Find item by id ====");
-                String idToFiend = input.askStr("Enter Id: ");
-                System.out.println(tracker.findById(idToFiend));
-                if(tracker.findById(idToFiend) == null){
-                    System.out.println("this item doesn't exist");
-                }
+               StartUI.findId(input, tracker);
             } else if (select == 5) {
-                System.out.println("=== Find item by name ====");
-                String name = input.askStr("Enter name: ");
-                Item[] items = tracker.findByName(name);
-                for (int i = 0; i < items.length; i++) {
-                    System.out.println("Found name: " + items[i]);
-                }
+                StartUI.findName(input, tracker);
             }else if (select == 6) {
                 System.out.println("Bye bye.");
                 run = false;
@@ -79,6 +115,12 @@ public class StartUI {
         Input input = new ConsoleInput();
         Tracker tracker = new Tracker();
         new StartUI().init(input, tracker);
+        StartUI.createItem(input, tracker);
+        StartUI.allItems(tracker);
+        StartUI.renameItem(input, tracker);
+        StartUI.delItem(input, tracker);
+        StartUI.findId(input, tracker);
+        StartUI.findName(input, tracker);
 
     }
 }
