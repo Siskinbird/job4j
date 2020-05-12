@@ -16,7 +16,7 @@ public class StartUI {
     /**
      * Показать все заявки.
      */
-    public static void allItems (Tracker tracker){
+    public static void allItems(Tracker tracker) {
         System.out.println("=== Show all items ====");
         System.out.println("All items: ");
         Item[] items = tracker.findAll();
@@ -31,7 +31,7 @@ public class StartUI {
     /**
      * Перезапись заявки.
      */
-    public static void renameItem(Input input, Tracker tracker){
+    public static void renameItem(Input input, Tracker tracker) {
         System.out.println("=== Edit item ====");
         String id = input.askStr("Enter id: ");
         String name = input.askStr("Enter new name: ");
@@ -45,11 +45,11 @@ public class StartUI {
     /**
      * Метод удаления заявки.
      */
-    public static void delItem(Input input, Tracker tracker){
+    public static void delItem(Input input, Tracker tracker) {
         System.out.println("=== Delete item ====");
         String enterId = input.askStr("Enter id: ");
         if (tracker.delete(enterId)) {
-            System.out.println( "Item deleted" );
+            System.out.println("Item deleted");
         } else {
             System.out.println("Item not found");
         }
@@ -57,11 +57,11 @@ public class StartUI {
     /**
      * Поиск по id
      */
-    public static void findId(Input input, Tracker tracker){
+    public static void findId(Input input, Tracker tracker) {
         System.out.println("=== Find item by id ====");
         String idToFiend = input.askStr("Enter Id: ");
         Item item = tracker.findById(idToFiend);
-        if (item != null){
+        if (item != null) {
             System.out.println(item);
         } else {
             System.out.println("this item doesn't exist");
@@ -70,7 +70,7 @@ public class StartUI {
     /**
      * Метод поиска заявки по имени
      */
-    public static void findName(Input input, Tracker tracker){
+    public static void findName(Input input, Tracker tracker) {
         System.out.println("=== Find item by name ====");
         String name = input.askStr("Enter name: ");
         Item[] items = tracker.findByName(name);
@@ -100,7 +100,7 @@ public class StartUI {
                StartUI.findId(input, tracker);
             } else if (select == 5) {
                 StartUI.findName(input, tracker);
-            }else if (select == 6) {
+            } else if (select == 6) {
                 System.out.println("Bye bye.");
                 run = false;
             }
@@ -110,7 +110,7 @@ public class StartUI {
      * Меню интерфейса программы Tracker
      */
     private void showMenu() {
-        System.out.println("0. Add new Item");//
+        System.out.println("0. Add new Item");
         System.out.println("1. Show all items");
         System.out.println("2. Edit item");
         System.out.println("3. Delete item");
@@ -127,4 +127,3 @@ public class StartUI {
         new StartUI().init(input, tracker);
     }
 }
-// Хоспаде
