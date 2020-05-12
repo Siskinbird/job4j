@@ -26,7 +26,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();  // Создаём объект tracker
         Item item = new Item("new item"); // Создаём объект item
         tracker.add(item); // добавляем item в tracker , item'у присваивается строка с id
-        String[] answers = { item.getId(), "replaced item"}; // Создаём массив строк имитируя результат работы с пользователем
+        String[] answers = {item.getId(), "replaced item"}; // Создаём массив строк имитируя результат работы с пользователем
         StartUI.renameItem(new StubInput(answers), tracker); // Запуск интерфейса, выбор действия, изменение объекта tracker
         Item replaced = tracker.findById(item.getId()); //  Ищем по item.id замененный item в объекте tracker
         assertThat(replaced.getName(), is("replaced item"));
@@ -36,7 +36,7 @@ public class StartUITest {
      * Тест метода на удаление заявки
      */
     @Test
-    public void whenItemDeleted(){
+    public void whenItemDeleted() {
         Tracker tracker = new Tracker(); // Создаём объект tracker
         Item item = new Item("new item"); // Создаём объект item
         tracker.add(item); // добавляем item в tracker , item'у присваивается строка с id

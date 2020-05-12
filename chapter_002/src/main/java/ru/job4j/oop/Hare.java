@@ -3,7 +3,8 @@ package ru.job4j.oop;
 public class Hare {
     public void tryEat(Ball ball) {
         System.out.println("Заяц: — Колобок, Колобок, я тебя съем!");
-        System.out.println("Колобок: — Не ешь меня, Заяц, я тебе песенку спою:\n" +
+        System.out.println("Колобок: — Не ешь меня, Заяц, я тебе песенку спою:\n"
+                +
                 "\n"
                 + "Я Колобок, Колобок,\n"
                 + "Я по коробу скребен,\n"

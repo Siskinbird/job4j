@@ -6,5 +6,7 @@ public class Builder extends Engineer {
         this.chertej = chertej;
         return chertej;
     }
-    void treatTask() {}
+    void treatTask() {
+
+    }
 }

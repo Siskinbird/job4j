@@ -8,5 +8,7 @@ public class Prorammer extends Engineer {
         this.proverkakoda = proverkakoda;
         return proverkakoda;
     }
-    void treatTask() {}
+    void treatTask() {
+
+    }
 }
