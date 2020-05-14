@@ -2,6 +2,7 @@ package strategy;
 import org.junit.Test;
 import ru.job4j.oop.strategy.Paint;
 import ru.job4j.oop.strategy.Square;
+import ru.job4j.oop.strategy.Triangle;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -30,11 +31,28 @@ public class PaintTest {
                                 .add("+     +")
                                 .add("+     +")
                                 .add("++++")
-                                .add(System.lineSeparator())
                                 .toString()
                 )
         );
         // возвращаем обратно стандартный вывод в консоль.
+        System.setOut(stdout);
+    }
+    @Test
+    public void whenDrawTriangle() {
+        PrintStream stdout = System.out;
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        new Paint().draw(new Triangle());
+        assertThat(
+                out.toString(),
+                is(
+                        new StringJoiner(System.lineSeparator())
+                                .add("  ^  ")
+                                .add(" ^ ^ ")
+                                .add("^^^^^")
+                                .toString()
+                )
+        );
         System.setOut(stdout);
     }
 }
