@@ -9,9 +9,9 @@ public class FindEl {
                 System.out.println(i);
                 return i;
             }
-            if (key == null) {
-                throw new ElementNotFoundException("Key could not be null");
-            }
+        }
+        if (rsl == -1) {
+            throw new ElementNotFoundException("Key could not be null");
         }
         return rsl;
     }
