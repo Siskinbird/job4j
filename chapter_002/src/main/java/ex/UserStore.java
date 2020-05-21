@@ -4,51 +4,49 @@ package ex;
 public class UserStore {
 
     public static User findUser(User[] users, String login) throws UserNotFoundException {
-        User[] found = new User[users.length];
-        int counter = 0;
+        User found = null;
         for (int index = 0; index < users.length; index++) {
-            User current = users[index];
-            if (current.getUsername().equals(login)) {
-                found[counter] = current;
-                counter++;
-                System.out.println("User found");
-            }
-            if (login == null) {
-                throw new UserNotFoundException("User not found");
+            if (users[index].getUsername().equals(login)) {
+                found = users[index];
+                break;
             }
         }
-         return found[counter]; // тоже сомневаюсь в этом выражении, но ничего иного return не хочет возвращать
-
+        if (found == null) {
+            throw new UserNotFoundException("User not found");
+        }
+        return found;
     }
-
-
-
-
 
     public static boolean validate(User user) throws UserInvalidException {
-        String username = user.getUsername();
-        int count = username.length(); // Получаю число символов из строки юзернэйм
-        if (user.isValid() && count > 3) { // условие успешной выалидации
+        int count = user.getUsername().length();
+        if (user.isValid() && count > 3) {
+            System.out.println("user is valid");
             return true;
-        } else { // Если валидация не проходит, то падает нижестоящее исключение
-            throw new UserInvalidException("Invalid user name"); // супер месседж
         }
+        if (!user.isValid() || count < 3) {
+            throw new UserInvalidException("Invalid user name");
+        }
+        return false;
     }
 
-   // подскажите пожалуйста как мне поймать 2е исключение, пишет что они одинаковые с первым
-    // что логично, так как одно наследник другого, но в задании надо поймать 2 исключения(
-    public static void main(String[] args) {
-        User[] users = {new User("Petr", true)}; // Тут я почему то создаю уже отвалидированного юзера
-        // Нужно ли тут еще создавать объект ?
-        try {
-            validate(findUser(users, "Ruslan"));{ // Тут провоцирую исключения
-            }
-        } catch (UserInvalidException ui) { // проверяем валидацию с нижестоящего исключения
-            ui.printStackTrace();
+    // подскажите пожалуйста как мне поймать 2е исключение, пишет что они одинаковые с первым
+    // а при использовании второго try, до него не доходит...
+    //
 
-        } catch (UserNotFoundException nof) { // тут я уже не представляю как изменить ситуацию
-           nof.printStackTrace();
+    public static void main(String[] args) {
+        User[] users = {new User("Valera", true)}; // Масиив с 1 юзером
+        User valera = new User("Billy", true); // Объект который ищем но не находим UserNotFoundException
+        User inValera = new User("va", false);// Инвалидный объект для UserInvalidException
+        try { // пробуем
+            validate(valera);
+            findUser(users, valera.getUsername()); // Тут выплывает UserNotFoundException
+            validate(inValera);
+            findUser(users, inValera.getUsername()); // Тут выплывает UserInvalidException
+
+        } catch (UserInvalidException ex) {
+            ex.printStackTrace();
+        } catch (UserNotFoundException e) {   //  Оно подсвечено, но при этом работает (
+            e.printStackTrace();
         }
     }
 }
-
