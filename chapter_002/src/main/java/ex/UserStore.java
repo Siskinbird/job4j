@@ -23,15 +23,15 @@ public class UserStore {
             System.out.println("user is valid");
             return true;
         }
-        if (!user.isValid() || count < 3) {
+        if (user.isValid()) {
+            throw new UserInvalidException("User not found");
+        }
+        if(count < 3){
             throw new UserInvalidException("Invalid user name");
         }
         return false;
     }
 
-    // подскажите пожалуйста как мне поймать 2е исключение, пишет что они одинаковые с первым
-    // а при использовании второго try, до него не доходит...
-    //
 
     public static void main(String[] args) {
         User[] users = {new User("Valera", true)}; // Масиив с 1 юзером
