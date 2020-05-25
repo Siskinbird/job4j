@@ -2,6 +2,9 @@ package ru.job4j.oop.tracker;
 
 import java.util.Scanner;
 
+/**
+ * Ввод с консоли
+ */
 public class ConsoleInput implements Input {
     private Scanner scanner = new Scanner(System.in);
 
@@ -19,10 +22,9 @@ public class ConsoleInput implements Input {
     @Override
     public int askInt(String question, int max) {
         int select = askInt(question);
-        if (select >= 0 && select < max) {
-            return select;
-        } else {
+        if (select < 0 || select > max) {
             throw new IllegalStateException(String.format("Out of about %s > [0, %s]", select, max));
         }
+        return select;
     }
 }
