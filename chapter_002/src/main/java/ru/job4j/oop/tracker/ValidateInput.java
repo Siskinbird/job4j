@@ -1,5 +1,8 @@
 package ru.job4j.oop.tracker;
 
+/**
+ * Проверка валидности ввода
+ */
 public class ValidateInput implements Input {
     private final Input input;
 

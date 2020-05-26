@@ -9,7 +9,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 public class FindByNameActionTest {
     @Test
-    public void WhenCheckOutput(){
+    public void whenCheckOutput() {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         PrintStream def = System.out;
         System.setOut(new PrintStream(out));

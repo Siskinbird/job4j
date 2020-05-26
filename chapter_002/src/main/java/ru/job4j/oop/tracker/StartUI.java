@@ -15,6 +15,10 @@ public class StartUI {
         }
     }
 
+    /**
+     * Масссив действий юзера
+     * @param actions
+     */
     private void showMenu(UserAction[] actions) {
         System.out.println("Menu.");
         for (int index = 0; index < actions.length; index++) {

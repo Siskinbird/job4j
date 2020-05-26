@@ -1,6 +1,6 @@
 package ru.job4j.oop.tracker;
 
-public class DeleteAction implements UserAction{
+public class DeleteAction implements UserAction {
     @Override
     public String name() {
         return "Delete item";
