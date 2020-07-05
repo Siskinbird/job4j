@@ -1,7 +1,5 @@
 package ru.job4j.oop.io;
 
-import ru.job4j.oop.tracker.StartUI;
-
 import java.util.Scanner;
 
 /**

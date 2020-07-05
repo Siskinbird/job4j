@@ -1,17 +1,16 @@
-package ru.job4j.oop.tracker;
-
+package ru.job4j.tracker;
 /**
- * Вывод всех заявок
+ * Поск по Имени
  * Реализация интерфейса UserAction
  */
-public class FindAllAction implements UserAction {
+public class FindByNameAction implements UserAction {
     @Override
     public String name() {
-        return "Show all items ";
+        return "Find item by name";
     }
     @Override
     public boolean execute(Input input, Tracker tracker) {
-        for (Item item : tracker.findAll()) {
+        for (Item item : tracker.findByName(input.askStr("Find items:"))) {
             System.out.println(String.format("%s %s", item.getId(), item.getName()));
         }
         return true;

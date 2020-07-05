@@ -1,6 +1,8 @@
 package ru.job4j.oop.tracker;
 
 import org.junit.Test;
+import ru.job4j.tracker.*;
+
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.StringJoiner;
