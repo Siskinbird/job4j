@@ -14,7 +14,6 @@ public class UsageArrayList {
         names.add("Viktor");
         names.add("Afanasy");
         names.add("Semen");
-
         for (Object value : names) {
             System.out.println("His name is: " + value + "!");
         }
