@@ -3,7 +3,7 @@ package ru.job4j.oop.tracker;
  * Поск по Имени
  * Реализация интерфейса UserAction
  */
-public class FindByNameAction implements UserAction{
+public class FindByNameAction implements UserAction {
     @Override
     public String name() {
         return "Find item by name";
