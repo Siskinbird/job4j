@@ -11,10 +11,9 @@ public class PriorityQueue {
      * @param task задача
      */
     public void put(Task task) {
-        int index = 0;
-        for (Task element : tasks) {
-
-
+        int index = tasks.size();
+        for (Task element: tasks) {
+            System.out.println(element.getPriority());
         }
         this.tasks.add(index, task);
     }

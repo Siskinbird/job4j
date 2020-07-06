@@ -3,12 +3,12 @@ package ru.job4j.search;
 public class Person {
     private String name;
     private String surname;
-    private int phone;
+    private String phone;
     private String address;
 
 
 
-    public Person(String name, String surname, int phone, String address) {
+    public Person(String name, String surname, String phone, String address) {
         this.name = name;
         this.surname = surname;
         this.phone = phone;
@@ -22,7 +22,7 @@ public class Person {
         return surname;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
