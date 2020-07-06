@@ -14,7 +14,9 @@ public class PhoneDictionary {
      */
     public ArrayList<Person> find(String key) {
         ArrayList<Person> result = new ArrayList<>();
-        boolean rst = persons.contains(key);
+        if(persons.contains(key)){
+            return result;
+        }
         return  persons;
     }
 }
