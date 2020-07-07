@@ -15,7 +15,7 @@ public class FindEl {
         }
         return rsl;
     }
-    public static void main(String[] args){
+    public static void main(String[] args) {
         try {
             FindEl.indexOf(null, null);
         } catch (ElementNotFoundException key) {

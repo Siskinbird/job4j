@@ -13,7 +13,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 public class FindByNameActionTest {
     @Test
-    public void WhenCheckOutput(){
+    public void whenCheckOutput() {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         PrintStream def = System.out;
         System.setOut(new PrintStream(out));
@@ -22,7 +22,7 @@ public class FindByNameActionTest {
         tracker.add(item);
         FindByNameAction act = new FindByNameAction();
         act.execute(new StubInput(new String[] {"test name"}), tracker);
-                                //
+
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add(item.getId() + " " + item.getName())
                 .toString();

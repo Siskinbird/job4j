@@ -2,7 +2,7 @@ package ex;
 
 public class Fact {
     public static void main(String[] args) {
-        System.out.println("Factorial : " + calc(-3) );
+        System.out.println("Factorial : " + calc(-3));
 
     }
 

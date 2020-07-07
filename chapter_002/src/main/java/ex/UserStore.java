@@ -26,7 +26,7 @@ public class UserStore {
         if (user.isValid()) {
             throw new UserInvalidException("User not found");
         }
-        if(count < 3){
+        if (count < 3) {
             throw new UserInvalidException("Invalid user name");
         }
         return false;
@@ -36,7 +36,7 @@ public class UserStore {
     public static void main(String[] args) {
         User[] users = {new User("Valera", true)}; // Масиив с 1 юзером
         User valera = new User("Billy", true); // Объект который ищем но не находим UserNotFoundException
-        User inValera = new User("va", false);// Инвалидный объект для UserInvalidException
+        User inValera = new User("va", false); // Инвалидный объект для UserInvalidException
         try { // пробуем
             validate(valera);
             findUser(users, valera.getUsername()); // Тут выплывает UserNotFoundException
