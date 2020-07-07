@@ -13,6 +13,10 @@ public class PhoneDictionaryTest {
     @Test
     public void whenFindByName() {
         PhoneDictionary phones = new PhoneDictionary();
+
+        phones.add(new Person("Sonya", "Blaid", "420420", "USA"));
+        phones.add(new Person("Ded", "Moroz", "4243420", "Skazka"));
+        phones.add(new Person("Gennadiy", "Krocodil", "53552", "Multik"));
         phones.add(new Person("Iosif", "Stalin", "420420", "Sovyetsky Soyouz"));
         ArrayList<Person> persons = phones.find("Iosif");
         assertThat(persons.get(0).getSurname(), is("Stalin"));
