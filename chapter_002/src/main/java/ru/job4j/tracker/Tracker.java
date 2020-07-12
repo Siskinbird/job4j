@@ -1,32 +1,24 @@
 package ru.job4j.tracker;
 
+import java.util.List;
 import java.util.Random;
 import java.util.ArrayList;
 
 public class Tracker {
     /**
-     * Массив для хранения заявок.
+     * Коллекция для хранения заявок.
      */
- //   private final Item[] items = new Item[100];
-    private final ArrayList<Item> items = new ArrayList<>();
-
+    private final List<Item> items = new ArrayList<>();
     /**
-     * Указатель ячейки для новой заявки.
-     */
- //   private int position = 0;
-
-    /**
-     * Метод добавления заявки в хранилище
-     *
+     * Метод добавления заявки в коллекцию
      * @param item новая заявка
      * @return Заполняет ячейку массива именем + сгенерированным id
      */
     public Item add(Item item) {
         item.setId(generateId());
-       // items[position++] = item;
+        items.add(item);
         return item;
     }
-
     /**
      * Метод генерирует уникальный ключ для заявки.
      * Так как у заявки нет уникальности полей, имени и описание. Для идентификации нам нужен уникальный ключ.
@@ -39,29 +31,17 @@ public class Tracker {
     }
 
     /**
-     * Копирует только заполненные ячейки массива, возвращает новую длинну массива
-     *
-     * @return Возвращает массив элементов и новый размер.
+     * Метод вывода содержимого коллекции заявок
+     * @return Возвращает коллекцию.
      */
-//    public Item[] findAll() {
-//        return Arrays.copyOf(items, position);
-//    }
-
-
-    public ArrayList<Item> findAll() {
-       ArrayList<Item> result = new ArrayList<>();
-        for (Item item : items) {
-            if (item.getName() != null) {
-                result.add(item);
-            }
-        }
-        return result;
+    public List<Item> findAll() {
+        return items;
     }
 
     /**
      * Поиск индекса заявки по id
-     *
-     * @param id
+
+     * @param id - уникальный ключ
      * @return Возвращает результат поиска.
      */
 
@@ -75,96 +55,53 @@ public class Tracker {
         }
         return rsl;
     }
-
     /**
      * Поиск по id
-     *
-     * @param id
+     * @param id - уникальный ключ
      * @return возвращает результат поиска
      */
     public Item findById(String id) {
         int index = indexOf(id);
         return index != -1 ? items.get(index) : null;
     }
-
     /**
      * Поиск по имени
-     *
-     * @param key
-     * @return возвращает результат поиска или пустой массив.
+     * @param key - Искомое имя
+     * @return Возвращает коллекцию найденных имён
      */
-
-    public ArrayList<Item> findByName(String key) {
-        ArrayList<Item> found = new ArrayList<>();
+    public List<Item> findByName(String key) {
+        List <Item> found = new ArrayList<>();
         for (Item item : items) {
-            if (item.getName().contains(key)) {
+            if (item.getName().equals(key)) {
                 found.add(item);
             }
-        } return found;
+        }  return found;
     }
-
-
-//    public Item[] findByName(String key) {
-//        Item[] found = new Item[position];
-//        int counter = 0;
- //       for (int index = 0; index < position; index++) {
-//            Item current = items[index];
- //           if (current.getName().equals(key)) {
-//                found[counter] = current;
-//                counter++;
-//            }
-//        }
-//        return Arrays.copyOf(found, counter);
- //   }
-
     /**
      * Замена заявки id
-     *
-     * @param id
-     * @param item
-     * @return
+     * @param id - Уникальный ключ
+     * @param item - Заявка
+     * @return - логический ответ
      */
-
-
     public boolean replace(String id, Item item) {
-        boolean result = false;
         int index = indexOf(id);
         if (index != -1) {
             items.set(index, item);
             item.setId(id);
             return true;
         }
-        return result;
+        return false;
     }
-
     /**
      * Удаление заявки id
      * @param id - индивидуальный номер заявки
      */
-public boolean  delete(String id) {
-   // boolean result = false;
-    //ArrayList<Item> found = new ArrayList<>();
-    for (Item item : items) {
-        if (item.getId().contains(id)) {
-            items.remove(item);
-            return true;
-        }
-    }return false;
-}
-   // public boolean delete(String id) {
-    //        boolean result = false;
-    //        int index = indexOf(id);
-    //        int start = index + 1;
-    //        int distPos = index;
-    //        int size = position - index;
-    //        if (index != -1) {
-    //            System.arraycopy(items, start, items, distPos, size);
-    //            items[position - 1] = null;
-    //            position--;
-    //            return true;
-    //        }
-    //        return result;
-    //    }
+    public boolean  delete(String id) {
+    if(indexOf(id) != -1){
+        items.remove(id);
+    }
+    return false;
+    }
 }
 
 
