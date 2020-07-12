@@ -97,10 +97,12 @@ public class Tracker {
      * @param id - индивидуальный номер заявки
      */
     public boolean  delete(String id) {
-    if(indexOf(id) != -1){
-        items.remove(id);
-    }
-    return false;
+    boolean result = false;
+        if(indexOf(id) != -1) {
+            items.remove(id);
+            result = true;
+        }
+        return result;
     }
 }
 
