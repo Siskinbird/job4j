@@ -1,9 +1,12 @@
 package ru.job4j.oop.tracker;
 
+
 import org.junit.Test;
 import ru.job4j.tracker.Item;
 import ru.job4j.tracker.Tracker;
-
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.core.Is.is;
@@ -16,6 +19,7 @@ public class TrackerTest {
      * tracker.add
      * Добавляем заявку с одинаковым именем
      */
+
     @Test
     public void whenAddNewItemThenTrackerHasSameItem() {
         Tracker tracker = new Tracker();
@@ -24,7 +28,6 @@ public class TrackerTest {
         Item result = tracker.findById(item.getId());
         assertThat(result.getName(), is(item.getName()));
     }
-
     /**
      * Тест на метод поиск заявки по имени
      * tracker.findAll
@@ -34,13 +37,13 @@ public class TrackerTest {
     public void when3NameNewMass() {
         Tracker tracker = new Tracker();
         Item name = new Item("Anton");
-        Item name1 = new Item("Igar");
+        Item name1 = new Item("Igor");
         Item name2 = new Item("Egor");
         tracker.add(name);
         tracker.add(name1);
         tracker.add(name2);
-        Item[] result = tracker.findAll();
-        assertThat(result, is(new Item[]{name, name1, name2}));
+        List<Item> result = tracker.findAll();
+        assertThat(result, is(new ArrayList<>(Arrays.asList(name, name1, name2))));
     }
 
     /**
@@ -49,12 +52,11 @@ public class TrackerTest {
      * Найденные заявки идут в новый массив обрезаный по количеству заявок
      * Заявок не найдено
      */
-
     @Test
     public void whenNoItems() {
         Tracker tracker = new Tracker();
-        Item[] result = tracker.findAll();
-        assertThat(result, is(new Item[]{}));
+        List<Item> result = tracker.findAll();
+        assertThat(result, is(new ArrayList<>()));
     }
 
     /**
@@ -89,8 +91,8 @@ public class TrackerTest {
         tracker.add(name);
         tracker.add(name1);
         tracker.add(name2);
-        Item[] found = tracker.findByName(name.getName());
-        assertThat(found, is(new Item[]{name, name1, name2}));
+        List<Item> found = tracker.findByName(name.getName());
+        assertThat(found, is(new ArrayList<>(Arrays.asList(name, name1, name2))));
     }
 
     /**
@@ -107,16 +109,15 @@ public class TrackerTest {
         tracker.add(name);
         tracker.add(name1);
         tracker.add(name2);
-        Item[] found = tracker.findByName(name1.getName());
-        assertThat(found, is(new Item[]{name1}));
+        List<Item> found = tracker.findByName(name1.getName());
+        assertThat(found, is(new ArrayList<>(Arrays.asList(name1))));
     }
     /**
      * Тест на метод замены заявки
      * tracker.replace
      * Найдена 1 заявка
      */
-
-        @Test
+    @Test
         public void whenReplace() {
             Tracker tracker = new Tracker();
             Item bug = new Item("Bug");
@@ -140,6 +141,6 @@ public class TrackerTest {
         tracker.delete(id);
         assertThat(tracker.findById(id), is(nullValue()));
     }
-    }
+}
 
 

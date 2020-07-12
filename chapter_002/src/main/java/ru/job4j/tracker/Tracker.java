@@ -99,7 +99,7 @@ public class Tracker {
     public boolean  delete(String id) {
     boolean result = false;
         if(indexOf(id) != -1) {
-            items.remove(id);
+            items.remove(items.get(indexOf(id)));
             result = true;
         }
         return result;
