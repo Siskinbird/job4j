@@ -85,7 +85,7 @@ public class Tracker {
      */
     public boolean replace(String id, Item item) {
         int index = indexOf(id);
-        if (index != -1) {
+        if (indexOf(id) != -1) {
             items.set(index, item);
             item.setId(id);
             return true;
@@ -97,12 +97,12 @@ public class Tracker {
      * @param id - индивидуальный номер заявки
      */
     public boolean  delete(String id) {
-    boolean result = false;
+        int index = indexOf(id);
         if(indexOf(id) != -1) {
-            items.remove(items.get(indexOf(id)));
-            result = true;
+            items.remove(items.get(index));
+            return true;
         }
-        return result;
+        return false;
     }
 }
 
