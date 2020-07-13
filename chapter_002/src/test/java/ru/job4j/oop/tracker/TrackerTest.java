@@ -142,5 +142,3 @@ public class TrackerTest {
         assertThat(tracker.findById(id), is(nullValue()));
     }
 }
-
-

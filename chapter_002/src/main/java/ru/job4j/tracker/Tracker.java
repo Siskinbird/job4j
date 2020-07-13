@@ -70,7 +70,7 @@ public class Tracker {
      * @return Возвращает коллекцию найденных имён
      */
     public List<Item> findByName(String key) {
-        List <Item> found = new ArrayList<>();
+        List<Item> found = new ArrayList<>();
         for (Item item : items) {
             if (item.getName().equals(key)) {
                 found.add(item);
@@ -98,7 +98,7 @@ public class Tracker {
      */
     public boolean  delete(String id) {
         int index = indexOf(id);
-        if(indexOf(id) != -1) {
+        if (indexOf(id) != -1) {
             items.remove(items.get(index));
             return true;
         }
