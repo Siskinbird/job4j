@@ -2,6 +2,12 @@ package ru.job4j.collection;
 
 import java.util.HashMap;
 
+/**
+ /* Класс UsageMap реализует знакомство с интерфейсом Map
+ * @author Dmitry Chizhov
+ * @since 15.07.20
+ * @version 1.00
+ */
 public class UsageMap {
     public static void main(String[] args) {
         HashMap<String, String> map = new HashMap<>();
