@@ -18,22 +18,16 @@ public class UniqueText {
      * @return - логический ответ
      */
     public static boolean isEquals(String originText, String duplicateText) {
-        boolean result = true;
-        int count = 0;
+        boolean rsl = true;
         String[] origin = originText.split(" ");
-        HashSet<String> check = new HashSet<>();
         String[] text = duplicateText.split(" ");
-        for (String originOne : origin) {
-            check.add(originOne);
-            for (String textDuplicate : text) {
-                if (originOne.contains(textDuplicate)) {
-                    count++;
-                    if (count == origin.length + 1) {
-                        return result;
-                    }
-                }
+        HashSet<String> check = new HashSet<>();
+        Collections.addAll(check, origin);
+        for (String s : text) {
+            if (!check.contains(s)) {
+                return false;
             }
         }
-        return false;
+        return rsl;
     }
 }
