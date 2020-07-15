@@ -9,7 +9,7 @@ public class UniqueTextTest {
      /* Тесты для метода isEquals реализующего проверку текста на идентичность
      * @author Dmitry Chizhov
      * @since 14.07.20
-     * @version 1
+     * @version 1.01
      */
     @Test
     /**
@@ -43,8 +43,8 @@ public class UniqueTextTest {
      */
     @Test
     public void isEquals1() {
-        String origin = "You speak of justice of cowardice I will show you what fear is and introduce you to the justice of death!";
-        String text = "You speak of cowardice of justice I show what you will fear is and introduce to you the death of justice!";
+        String origin = "You speak of justice of cowardice I will show you what fear is and introduce you to the justice of death";
+        String text = "You speak of cowardice of justice I show what you will fear is and introduce to you the death of justice";
         assertThat(UniqueText.isEquals(origin, text), is(true));
     }
 }
