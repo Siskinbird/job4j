@@ -9,7 +9,7 @@ import java.util.Map;
  /* Класс BankService реализует работу сервиса банка.
  * @author Dmitry Chizhov
  * @since 16.07.20
- * @version 1.00
+ * @version 1.10
  */
 public class BankService {
     private Map<User, List<Account>> users = new HashMap<>();
@@ -21,22 +21,21 @@ public class BankService {
      * @param user - Новый пользователь
      */
     public void addUser(User user) {
-        if (!users.containsKey(user)) {
-            users.put(user, accounts);
-        }
-
+        users.putIfAbsent(user, accounts);
     }
 
     /**
      * Метод addAccount  реализует интеграцию нового счета к пользователю
      *
      * @param passport - индивидуальный номер
-     * @param account  - сомтояние счёта пользователя
+     * @param account  - счёт пользователя
      */
     public void addAccount(String passport, Account account) {
-        if (findByPassport(passport) != null) {
-            if (!passport.equals(account.getRequisite())) {
-                account.setRequisite(passport);
+        User user = findByPassport(passport);
+        if (user != null) {
+            List<Account> accounts = users.get(user);
+            if (!accounts.contains(account)){
+                accounts.add(account);
             }
         }
     }
@@ -64,15 +63,14 @@ public class BankService {
      * @return
      */
     public Account findByRequisite(String passport, String requisite) {
-        if (findByPassport(passport) != null) {
-            String finduser = passport;
-          if (finduser != null){
-              for (Account account : accounts){
-                  if (account.getRequisite().equals(requisite)){
-                      return account;
-                  }
-              }
-          }
+        User user = findByPassport(passport);
+        if (user != null){
+            List<Account> accounts = users.get(user);
+            for (Account account : accounts){
+                if (account.getRequisite().equals(requisite)){
+                    return account;
+                }
+            }
         }
         return null;
     }
