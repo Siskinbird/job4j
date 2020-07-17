@@ -9,7 +9,7 @@ import java.util.Map;
  /* Класс BankService реализует работу сервиса банка.
  * @author Dmitry Chizhov
  * @since 17.07.20
- * @version 1.20
+ * @version 1.21
  */
 public class BankService {
     private Map<User, List<Account>> users = new HashMap<>();
@@ -91,10 +91,8 @@ public class BankService {
        Account destAccount = findByRequisite(destPassport, destRequisite);
        if (srcAccount != null && destAccount != null) {
           if (srcAccount.getBalance() - amount >= 0.00) {
-              double cash = srcAccount.getBalance() + destAccount.getBalance();
-              double ostatok = srcAccount.getBalance() - amount;
-              srcAccount.setBalance(ostatok);
-              destAccount.setBalance(cash);
+              srcAccount.setBalance(srcAccount.getBalance() - amount);
+              destAccount.setBalance(destAccount.getBalance() + amount);
               return true;
           }
           return rsl;
