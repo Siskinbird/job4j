@@ -1,27 +1,46 @@
 package ru.job4j.tracker;
 
+
 import org.junit.Test;
+
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static org.hamcrest.core.Is.is;
+import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 
 public class ComparatorTest {
     @Test
-    public void whenReverse() {
-        List<Integer> list = Arrays.asList(5, 3, 4, 1, 2);
-        Collections.sort(list, Collections.reverseOrder());
-        List<Integer> expect = Arrays.asList(5, 4, 3, 2 ,1);
-        assertThat(list, is (expect));
+    public void whenItemUp(){
+        List<Item> items = Arrays.asList(
+                new Item("Igor"),
+                new Item("Slava"),
+                new Item("Serega")
+        );
+        Collections.sort(items, new CompareUp());
+        List<Item> expect = Arrays.asList(
+                new Item("Igor"),
+                new Item("Serega"),
+                new Item("Slava")
+        );
+        assertThat(items, equalTo(expect));
+
     }
     @Test
-    public void whenUp(){
-        List<Integer> list = Arrays.asList(4,8,3,2,7,6,1,5);
-        Collections.sort(list);
-        List<Integer> expect = Arrays.asList(1, 2, 3, 4 , 5, 6, 7, 8);
-        assertThat(list, is (expect));
+    public void whenItemDown(){
+        List<Item> items = Arrays.asList(
+                new Item("Igor"),
+                new Item("Slava"),
+                new Item("Serega")
+        );
+        Collections.sort(items, new CompareDown());
+        List<Item> expect = Arrays.asList(
+               new Item("Slava"),
+               new Item("Serega"),
+               new Item("Igor")
+        );
+        assertThat(items, equalTo(expect));
     }
 }
