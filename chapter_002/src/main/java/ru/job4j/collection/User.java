@@ -10,7 +10,7 @@ import java.util.Objects;
  * @version 1.00
  */
 
-public class User implements Comparable<User> {
+public class User {
     private String name;
     private int age;
 
@@ -34,7 +34,7 @@ public class User implements Comparable<User> {
         this.name = name;
         this.age = age;
     }
-    @Override
+
     public int compareTo(User b) {
     Comparator<User> byName = new UserNameComparator();
     Comparator<User> byAge = new UserAgeComparator();
