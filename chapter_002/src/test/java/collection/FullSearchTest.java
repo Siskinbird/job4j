@@ -20,7 +20,7 @@ import static org.junit.Assert.assertThat;
 
 public class FullSearchTest {
     @Test
-    public void extractNumber(){
+    public void extractNumber() {
         List<Task> tasks =  Arrays.asList(
                 new Task("1", "First desc"),
                 new Task("2", "Second desc"),

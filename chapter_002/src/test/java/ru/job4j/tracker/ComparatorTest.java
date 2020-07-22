@@ -13,7 +13,7 @@ import static org.junit.Assert.assertThat;
 
 public class ComparatorTest {
     @Test
-    public void whenItemUp(){
+    public void whenItemUp() {
         List<Item> items = Arrays.asList(
                 new Item("Igor"),
                 new Item("Slava"),
@@ -29,7 +29,7 @@ public class ComparatorTest {
 
     }
     @Test
-    public void whenItemDown(){
+    public void whenItemDown() {
         List<Item> items = Arrays.asList(
                 new Item("Igor"),
                 new Item("Slava"),

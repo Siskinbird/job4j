@@ -22,7 +22,7 @@ public class JobTest {
         assertThat(rsl, lessThan(0));
     }
     @Test
-    public void whenAscCombCmp(){
+    public void whenAscCombCmp() {
         Comparator<Job> cmpAsc = new JobAscByName().thenComparing(new JobAscByPriority());
         int rsl = cmpAsc.compare(
                 new Job("Pospat' task", 42),
@@ -30,7 +30,7 @@ public class JobTest {
         assertThat(rsl, greaterThan(0));
     }
     @Test
-    public void whenDesCombCmp(){
+    public void whenDesCombCmp() {
         Comparator<Job> cmpDesc = new JobDescByName().thenComparing(new JobDescByPriority());
         int rsl = cmpDesc.compare(
                 new Job("Pomolitsya task", 7),
