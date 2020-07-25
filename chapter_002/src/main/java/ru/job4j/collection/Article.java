@@ -17,8 +17,8 @@ public class Article {
     public static boolean generateBy(String origin, String line) {
         String[] originText = origin.split("[\"., :!;\"]");
         String[] lineText = line.split("[\"., :!;\"]");
-        TreeSet<String> check = new TreeSet<>();
-        TreeSet<String> result = new TreeSet<>();
+        List<String> check = new ArrayList<>();
+        List<String> result = new ArrayList<>();
         Collections.addAll(check, originText);
         for (String s : lineText) {
             for (String value : originText) {
