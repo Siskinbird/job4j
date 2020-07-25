@@ -5,8 +5,8 @@ import java.util.*;
 /**
  /* Directory of departments
  * @author Dmitry Chizhov
- * @since 23.07.20
- * @version 1.00
+ * @since 25.07.20
+ * @version 1.10
  */
 
 public class Departments {
@@ -17,22 +17,20 @@ public class Departments {
      */
 
     public static List<String> fillGaps(List<String> deps) {
-        HashSet<String> tmp = new HashSet<>();
+        TreeSet<String> tmp = new TreeSet<>();
         for (String value : deps) {
             String start = "";
             for (String el : value.split("/")) {
-                if (!start.equals("")){
+                if (!start.equals("")) {
                     tmp.add(start + "/" + el);
                     start = start + "/" + el;
-                }else {
+                } else {
                     tmp.add(el);
                     start = el;
                 }
             }
         }
-        ArrayList rst = new ArrayList(tmp);
-        sortAsc(rst);
-        return rst;
+        return new ArrayList<>(tmp);
     }
 
     /**
