@@ -11,16 +11,10 @@ public class DepDescComp implements Comparator<String> {
     public int compare(String o1, String o2) {
         String[] first = o1.split("/");
         String[] second = o2.split("/");
-        for (int i = 0; i < Math.min(first.length, second.length); i++) {
-            if (second[i].compareTo(first[i]) != 0) {
-                return first[i].compareTo(second[i]);
-            }
+        int rsl = second[0].compareTo(first[0]);
+        if (rsl == 0) {
+            rsl = o1.compareTo(o2);
         }
-        if (Arrays.equals(first, second)) {
-            return 0;
-        } else {
-            return -1;
-        }
+        return rsl;
     }
 }
-

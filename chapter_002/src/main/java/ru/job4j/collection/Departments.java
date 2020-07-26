@@ -12,6 +12,7 @@ import java.util.*;
 public class Departments {
     /**
      * Method fillGaps sorts departments
+     *
      * @param deps - Departments
      * @return - Returns a sorted list
      */
@@ -35,6 +36,7 @@ public class Departments {
 
     /**
      * Method sortAsc for sorting departments in ascending order
+     *
      * @param orgs
      */
 
@@ -44,10 +46,11 @@ public class Departments {
 
     /**
      * Method sortAsc for sorting departments in descending order
+     *
      * @param orgs
      */
 
     public static void sortDesc(List<String> orgs) {
-        orgs.sort(Collections.reverseOrder());
+        orgs.sort(new DepDescComp());
     }
 }
