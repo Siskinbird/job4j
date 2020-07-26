@@ -35,7 +35,7 @@ public class DepartmentsTest {
         assertThat(result, is(expect));
     }
     @Test
-    public void whenBigChanges(){
+    public void whenBigChanges() {
         List<String> input = Arrays.asList("K2/SK1/SSK2", "K1/SK1/SSK2", "K1", "K1/SK1", "K2/SK1/SSK1", "K1/SK1/SSK1", "K1/SK2", "K2/SK1", "K2");
         List<String> expect = Arrays.asList("K1", "K1/SK1", "K1/SK1/SSK1", "K1/SK1/SSK2", "K1/SK2", "K2", "K2/SK1", "K2/SK1/SSK1", "K2/SK1/SSK2");
         List<String> result = Departments.fillGaps(input);
