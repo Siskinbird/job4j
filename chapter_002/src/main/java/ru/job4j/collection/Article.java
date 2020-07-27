@@ -15,18 +15,9 @@ public class Article {
      * @return true or false
      */
     public static boolean generateBy(String origin, String line) {
-        String[] originText = origin.split("[\"., :!;\"]");
-        String[] lineText = line.split("[\"., :!;\"]");
-        List<String> check = new ArrayList<>();
-        List<String> result = new ArrayList<>();
-        Collections.addAll(check, originText);
-        for (String s : lineText) {
-            for (String value : originText) {
-                if (s.equals(value)) {
-                    result.add(s);
-                }
-            }
-        }
+        String[] originText = origin.split("\\p{Punct}");
+        String[] lineText = line.split("\\p{Punct}");
+        HashSet<String> result = new HashSet<>(Arrays.asList(originText));
         return result.containsAll(Arrays.asList(lineText));
     }
 }
