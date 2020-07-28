@@ -1,0 +1,36 @@
+package ru.job4j.lambda;
+
+/**
+ *Data Model for Learning Anonymous Classes
+ */
+public class Attachment {
+    private final String name;
+    private final int size;
+
+    public Attachment(String name, int size) {
+        this.name = name;
+        this.size = size;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    @Override
+    public String toString() {
+        return "{"
+                +
+                "name='"
+                + name
+                + '\''
+                +
+                ", size="
+                + size
+                +
+                '}';
+    }
+}
