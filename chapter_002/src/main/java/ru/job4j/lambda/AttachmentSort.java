@@ -7,6 +7,7 @@ import java.util.List;
 /**
  * Exploring Anonymous Classes
  */
+
 public class AttachmentSort {
     public static void main(String[] args) {
         List<Attachment> attachments = Arrays.asList(

@@ -3,6 +3,7 @@ package ru.job4j.lambda;
 /**
  *Data Model for Learning Anonymous Classes
  */
+
 public class Attachment {
     private final String name;
     private final int size;
