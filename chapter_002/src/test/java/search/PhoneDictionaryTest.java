@@ -39,4 +39,13 @@ public class PhoneDictionaryTest {
         assertThat(persons.get(0).getPhone(), is("420420"));
         assertThat(persons.get(1).getPhone(), is("666666"));
     }
+    @Test
+    public void whenFindByNamePredicateUse() {
+        PhoneDictionary phones = new PhoneDictionary();
+        phones.add(
+                new Person("Petr", "Arsentev", "534872", "Bryansk")
+        );
+        ArrayList<Person> persons = phones.find("Petr");
+        assertThat(persons.get(0).getSurname(), is("Arsentev"));
+    }
 }
