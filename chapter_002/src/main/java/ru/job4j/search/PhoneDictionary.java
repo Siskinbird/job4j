@@ -12,14 +12,14 @@ public class PhoneDictionary {
     /**
      * Вернуть список всех пользователей, который содержат key в любых полях.
      * @param key Ключ поиска.
-     * @return Список подошедщих пользователей.
+     * @return Список подошедших пользователей.
      */
     public ArrayList<Person> find(String key) {
-        Predicate<String> nameCheck = name -> name.contains(key);
-        Predicate<String> surnameCheck = surname -> surname.contains(key);
-        Predicate<String> phoneCheck = phone -> phone.contains(key);
-        Predicate<String> addressCheck = address -> address.contains(key);
-        Predicate<Person> combine = check -> nameCheck.or(surnameCheck).or(phoneCheck).or(addressCheck).test(key);
+        Predicate<Person> nameCheck = f -> f.getName().contains(key);
+        Predicate<Person> surnameCheck = f -> f.getSurname().contains(key);
+        Predicate<Person> phoneCheck = f -> f.getPhone().contains(key);
+        Predicate<Person> addressCheck = f -> f.getAddress().contains(key);
+        Predicate<Person> combine = nameCheck.or(surnameCheck).or(phoneCheck).or(addressCheck);
         ArrayList<Person> result = new ArrayList<>();
         for (Person person : persons) {
             if (combine.test(person)) {
