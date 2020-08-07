@@ -30,12 +30,19 @@ public class Person {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Person person = (Person) o;
-        return Objects.equals(name, person.name) &&
-                Objects.equals(surname, person.surname) &&
-                Objects.equals(phone, person.phone) &&
+        return Objects.equals(name, person.name)
+                &&
+                Objects.equals(surname, person.surname)
+                &&
+                Objects.equals(phone, person.phone)
+                &&
                 Objects.equals(address, person.address);
     }
 
@@ -50,11 +57,24 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", phone='" + phone + '\'' +
-                ", address='" + address + '\'' +
+        return "Person{"
+                +
+                "name='"
+                + name
+                + '\''
+                +
+                ", surname='"
+                + surname
+                + '\''
+                +
+                ", phone='"
+                + phone
+                + '\''
+                +
+                ", address='"
+                + address
+                + '\''
+                +
                 '}';
     }
 }
