@@ -1,12 +1,30 @@
 package ru.job4j.stream;
 
+import java.util.Objects;
+
 /**
  * Data model for class Profiles
  * @author Dmitrii Chizhov (dimachig@gmail.com)
  * @since 08.08.2020
- * @version 1.00
+ * @version 1.10
  */
 public class Address {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Address address = (Address) o;
+        return home == address.home &&
+                apartment == address.apartment &&
+                Objects.equals(city, address.city) &&
+                Objects.equals(street, address.street);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(city, street, home, apartment);
+    }
+
     private String city;
     private String street;
     private int home;
@@ -34,24 +52,13 @@ public class Address {
     public int getApartment() {
         return apartment;
     }
+
     @Override
     public String toString() {
-        return "Address{"
-                +
-                "city:'"
-                + city
-                + '\''
-                +
-                ", street:'"
-                + street
-                + '\''
-                +
-                ", home:"
-                + home
-                +
-                ", apartment:"
-                + apartment
-                +
-                '}';
+        return ":::Address::: " + "\n" +
+                "city: " + city + " " +
+                ";street: " + street + " "+
+                ";home: " + home +
+                ";apartment: " + apartment + "\n";
     }
 }
