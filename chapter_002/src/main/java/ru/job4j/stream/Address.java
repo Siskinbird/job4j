@@ -6,7 +6,7 @@ import java.util.Objects;
  * Data model for class Profiles
  * @author Dmitrii Chizhov (dimachig@gmail.com)
  * @since 08.08.2020
- * @version 1.10
+ * @version 1.20
  */
 public class Address {
     @Override
@@ -80,4 +80,5 @@ public class Address {
                 + apartment
                 + "\n";
     }
+
 }
