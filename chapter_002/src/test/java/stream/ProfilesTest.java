@@ -3,6 +3,7 @@ package stream;
 import org.junit.Test;
 import ru.job4j.stream.Address;
 import ru.job4j.stream.Profile;
+import ru.job4j.stream.Profiles;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -21,11 +22,11 @@ public class ProfilesTest {
                 new Profile(new Address("Moscow", "Putin", 13, 13)),
                 new Profile(new Address("Khabarovsk", "Protest", 24, 42)));
         List<Address> expect = Arrays.asList(
-                new Address("Hell", "Scream", 6, 66),
                 new Address("Heaven", "Angel", 9, 99),
-                new Address("Moscow", "Putin", 13, 13),
-                new Address("Khabarovsk", "Protest", 24, 42));
-        assertThat(profiles.stream().map(Profile::getAddress).collect(Collectors.toList()), is(expect));
+                new Address("Hell", "Scream", 6, 66),
+                new Address("Khabarovsk", "Protest", 24, 42),
+                new Address("Moscow", "Putin", 13, 13));
+        assertThat(Profiles.collect(profiles), is(expect));
     }
     @Test
     public void whenDeleteDuplicate() {
@@ -40,8 +41,6 @@ public class ProfilesTest {
                 new Address("Hell", "Scream", 6, 66),
                 new Address("Khabarovsk", "Protest", 24, 42),
                 new Address("Moscow", "Putin", 13, 13));
-        assertThat(profiles.stream().map(Profile::getAddress)
-                .sorted(Comparator.comparing(Address::getCity))
-                .distinct().collect(Collectors.toList()), is(expect));
+        assertThat(Profiles.collect(profiles), is(expect));
     }
 }
