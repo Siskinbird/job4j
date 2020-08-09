@@ -33,7 +33,7 @@ public class ListToMapTest {
         assertThat(ListToMap.mapIn(comeIn), is(expect));
     }
     @Test
-    public void whenCallOne(){
+    public void whenCallOne() {
         List<Student> comeIn = Arrays.asList(
                 new Student("Lukashenko", 3),
                 new Student("Tikhanovskaya", 97),
