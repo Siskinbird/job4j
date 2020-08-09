@@ -6,9 +6,7 @@ import ru.job4j.stream.Profile;
 import ru.job4j.stream.Profiles;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
