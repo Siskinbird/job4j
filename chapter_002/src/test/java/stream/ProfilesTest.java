@@ -10,16 +10,20 @@ import java.util.stream.Collectors;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-import static ru.job4j.stream.Profiles.collect;
 
 public class ProfilesTest {
     @Test
-    public void whenAllWorks(){
+    public void whenSwapProfileToAddress(){
         List<Profile> profiles = Arrays.asList(
                 new Profile(new Address("Hell", "Scream", 6, 66)),
                 new Profile(new Address("Heaven", "Angel", 9, 99)),
                 new Profile(new Address("Moscow", "Putin", 13, 13)),
                 new Profile(new Address("Khabarovsk", "Protest", 24, 42)));
-        assertThat(collect(profiles), is(profiles.stream().map(Profile::getAddress).collect(Collectors.toList())));
+        List<Address> expect = Arrays.asList(
+                new Address("Hell", "Scream", 6, 66),
+                new Address("Heaven", "Angel", 9, 99),
+                new Address("Moscow", "Putin", 13, 13),
+                new Address("Khabarovsk", "Protest", 24, 42));
+        assertThat(profiles.stream().map(Profile::getAddress).collect(Collectors.toList()), is(expect));
     }
 }
