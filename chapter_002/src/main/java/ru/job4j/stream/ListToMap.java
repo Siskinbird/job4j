@@ -16,6 +16,6 @@ public class ListToMap {
      * @return - Map of Students
      */
     public static Map<String, Student> mapIn(List<Student> reworks) {
-        return reworks.stream().distinct().collect(Collectors.toMap(Student::getSurname, obj -> obj));
+        return reworks.stream().collect(Collectors.toMap(Student::getSurname, obj -> obj,  (sur1, sur2) -> sur1));
     }
 }
