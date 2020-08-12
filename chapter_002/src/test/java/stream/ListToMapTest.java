@@ -50,7 +50,7 @@ public class ListToMapTest {
         assertThat(expect.get("Lukashenko"), is(new Student("Lukashenko", 3)));
     }
     @Test
-    public void whenDuplicate(){
+    public void whenDuplicate() {
         List<Student> comeIn = Arrays.asList(
                 new Student("Lukashenko", 3),
                 new Student("Lukashenko", 3),
