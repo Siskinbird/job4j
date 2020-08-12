@@ -49,4 +49,22 @@ public class ListToMapTest {
         );
         assertThat(expect.get("Lukashenko"), is(new Student("Lukashenko", 3)));
     }
+    @Test
+    public void whenDuplicate(){
+        List<Student> comeIn = Arrays.asList(
+                new Student("Lukashenko", 3),
+                new Student("Lukashenko", 3),
+                new Student("Tikhanovskaya", 97),
+                new Student("Dima", 66),
+                new Student("Vasya", 44),
+                new Student("Igor", 42));
+        Map<String, Student> expect = Map.of(
+                "Dima", new Student("Dima", 66),
+                "Vasya", (new Student("Vasya", 44)),
+                "Igor", (new Student("Igor", 42)),
+                "Tikhanovskaya", (new Student("Tikhanovskaya", 97)),
+                "Lukashenko", (new Student("Lukashenko", 3))
+        );
+        assertThat(expect.get("Lukashenko"), is(new Student("Lukashenko", 3)));
+    }
 }
