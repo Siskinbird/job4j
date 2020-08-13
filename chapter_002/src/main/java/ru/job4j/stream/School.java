@@ -19,7 +19,6 @@ public class School {
      * @return - Sorted list
      */
     public static List<Student> collect(List<Student> students, Predicate<Student> predict) {
-        List<Student> scoreList = students.stream().filter(predict).collect(Collectors.toList());
-        return scoreList;
+        return students.stream().filter(predict).collect(Collectors.toList());
     }
 }
