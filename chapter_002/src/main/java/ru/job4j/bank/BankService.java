@@ -1,9 +1,7 @@
 package ru.job4j.bank;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
 
 /**
  /* Класс BankService реализует работу сервиса банка.
@@ -25,34 +23,14 @@ public class BankService {
     }
 
     /**
-     * Метод addAccount  реализует интеграцию нового счета к пользователю
-     *
-     * @param passport - индивидуальный номер
-     * @param account  - счёт пользователя
-     */
-    public void addAccount(String passport, Account account) {
-        User user = findByPassport(passport);
-        if (user != null) {
-            List<Account> accounts = users.get(user);
-            if (!accounts.contains(account)) {
-                accounts.add(account);
-            }
-        }
-    }
-
-    /**
      * Метод findByPassport реализует поиск пользователя по уникальному номеру
      *
      * @param passport - уникальный номер пользователя
      * @return - возвращает найденого пользователя
      */
     public User findByPassport(String passport) {
-        for (User user : users.keySet()) {
-            if (user.getPassport().equals(passport)) {
-                return user;
-            }
-        }
-        return null;
+       return users.keySet().stream().filter
+               (u -> u.getPassport().contains(passport)).findFirst().orElse(null);
     }
 
     /**
@@ -63,17 +41,26 @@ public class BankService {
      * @return - возвращает найденный счёт, или null
      */
     public Account findByRequisite(String passport, String requisite) {
-        User user = findByPassport(passport);
-        if (user != null) {
-            List<Account> accounts = users.get(user);
-            for (Account account : accounts) {
-                if (account.getRequisite().equals(requisite)) {
-                    return account;
-                }
-            }
-        }
-        return null;
+       return users.get(findByPassport(passport)).stream().filter
+               (u -> u.getRequisite().equals(requisite)).findFirst().orElse(null);
     }
+
+    /**
+     * Метод addAccount  реализует интеграцию нового счета к пользователю
+     * @param passport - индивидуальный номер
+     * @param account  - счёт пользователя
+     */
+    public void addAccount(String passport, Account account) {
+        User user = findByPassport(passport);
+                if (user != null) {
+                    List<Account> accounts = users.get(user);
+                    if (!accounts.contains(account)) {
+                        accounts.add(account);
+                    }
+                }
+    }
+
+    //
 
     /**
      * Метод transferMoney реализует перевод средств пользователя между его счетами
