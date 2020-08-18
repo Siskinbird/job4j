@@ -12,8 +12,7 @@ import static org.hamcrest.core.Is.is;
 public class PhoneDictionaryTest {
     @Test
     public void whenFindByName() {
-        PhoneDictionary phones = new PhoneDictionary();
-
+       var phones = new PhoneDictionary();
         phones.add(new Person("Sonya", "Blaid", "420420", "USA"));
         phones.add(new Person("Ded", "Moroz", "4243420", "Skazka"));
         phones.add(new Person("Gennadiy", "Krocodil", "53552", "Multik"));
@@ -23,14 +22,14 @@ public class PhoneDictionaryTest {
     }
     @Test
     public void whenFindByPrefix() {
-        PhoneDictionary phones = new PhoneDictionary();
+        var phones = new PhoneDictionary();
         phones.add(new Person("Iosif", "Stalin", "420420", "Sovyetsky Soyouz"));
         ArrayList<Person> persons = phones.find("uz");
         assertThat(persons.get(0).getAddress(), is("Sovyetsky Soyouz"));
     }
     @Test
     public void whenFindTwoPersons() {
-        PhoneDictionary phones = new PhoneDictionary();
+        var phones = new PhoneDictionary();
         phones.add(new Person("Iosif", "Stalin", "420420", "Sovyetsky Soyouz"));
         phones.add(new Person("Ivan", "Grozniy", "666666", "High on sky"));
         ArrayList<Person> persons = phones.find("sky");
@@ -41,7 +40,7 @@ public class PhoneDictionaryTest {
     }
     @Test
     public void whenFindByNamePredicateUse() {
-        PhoneDictionary phones = new PhoneDictionary();
+        var phones = new PhoneDictionary();
         phones.add(
                 new Person("Petr", "Arsentev", "534872", "Bryansk")
         );
