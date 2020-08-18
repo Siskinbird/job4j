@@ -21,12 +21,12 @@ public class NotifyAccountTest {
      */
     @Test
     public void sent() {
-        List<Account> accounts = Arrays.asList(
+        List<Account> accounts = List.of(
                 new Account("123", "Petr Arsentev", "eDer3432f"),
                 new Account("142", "Petr Arsentev", "000001")
         );
         HashSet<Account> expect = new HashSet<>(
-                Arrays.asList(
+                List.of(
                         new Account("123", "Petr Arsentev", "eDer3432f"),
                         new Account("142", "Petr Arsentev", "000001")
                 )
@@ -38,14 +38,14 @@ public class NotifyAccountTest {
      */
     @Test
     public void sentWhitOutClones() {
-        List<Account> accounts = Arrays.asList(
+        List<Account> accounts = List.of(
                 new Account("0066600", "βεελζεβοὺλ", "666666666666666"),
                 new Account("0000001", "Jesus Christ", "00000000000001"),
                 new Account("0066600", "βεελζεβοὺλ", "666666666666666"),
                 new Account("0000001", "Jesus Christ", "00000000000001")
         );
         HashSet<Account> expect = new HashSet<>(
-                Arrays.asList(
+                List.of(
                         new Account("0066600", "βεελζεβοὺλ", "666666666666666"),
                         new Account("0000001", "Jesus Christ", "00000000000001")
                 )
