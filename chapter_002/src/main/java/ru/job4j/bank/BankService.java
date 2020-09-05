@@ -28,9 +28,8 @@ public class BankService {
      * @param passport - уникальный номер пользователя
      * @return - возвращает найденого пользователя
      */
-    public User findByPassport(String passport) {
-       return users.keySet().stream().filter
-               (u -> u.getPassport().contains(passport)).findFirst().orElse(null);
+    public Optional<User> findByPassport(String passport) {
+        return users.keySet().stream().filter(u -> u.getPassport().equals(passport)).findFirst();
     }
 
     /**
@@ -41,9 +40,15 @@ public class BankService {
      * @return - возвращает найденный счёт, или null
      */
     public Account findByRequisite(String passport, String requisite) {
-       return users.get(findByPassport(passport)).stream().filter
-               (u -> u.getRequisite().equals(requisite)).findFirst().orElse(null);
+        Optional<Account> rst = Optional.empty();
+        Optional<User> user = findByPassport(passport);
+        if (user.isPresent()) {
+            users.get(user).stream().filter(u -> u.getRequisite().equals(requisite)).findFirst();
+        }
+        return rst.get();
     }
+// return users.get(findByPassport(passport)).stream().filter
+//               (u -> u.getRequisite().equals(requisite)).findFirst().orElse(null);
 
     /**
      * Метод addAccount  реализует интеграцию нового счета к пользователю
@@ -51,16 +56,14 @@ public class BankService {
      * @param account  - счёт пользователя
      */
     public void addAccount(String passport, Account account) {
-        User user = findByPassport(passport);
-                if (user != null) {
-                    List<Account> accounts = users.get(user);
-                    if (!accounts.contains(account)) {
-                        accounts.add(account);
-                    }
-                }
+        Optional<User> user = findByPassport(passport);
+        if (user.isPresent()) {
+            List<Account> accounts = users.get(user);
+            if (!accounts.contains(account)) {
+                accounts.add(account);
+            }
+        }
     }
-
-    //
 
     /**
      * Метод transferMoney реализует перевод средств пользователя между его счетами
