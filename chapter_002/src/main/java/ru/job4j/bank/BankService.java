@@ -7,7 +7,7 @@ import java.util.*;
  /* Класс BankService реализует работу сервиса банка.
  * @author Dmitry Chizhov
  * @since 17.07.20
- * @version 1.21
+ * @version 1.51
  */
 public class BankService {
     private Map<User, List<Account>> users = new HashMap<>();
@@ -15,7 +15,6 @@ public class BankService {
 
     /**
      * Метод addUser реализует интеграцию нового пользователя в систему банка.
-     *
      * @param user - Новый пользователь
      */
     public void addUser(User user) {
@@ -24,7 +23,6 @@ public class BankService {
 
     /**
      * Метод findByPassport реализует поиск пользователя по уникальному номеру
-     *
      * @param passport - уникальный номер пользователя
      * @return - возвращает найденого пользователя
      */
@@ -34,22 +32,14 @@ public class BankService {
 
     /**
      * Метод findByRequisite ищет счет пользователя по реквезитам
-     *
      * @param passport  - уникальный номер пользователя
      * @param requisite - реквизиты пользователя
      * @return - возвращает найденный счёт, или null
      */
-    public Account findByRequisite(String passport, String requisite) {
-        Optional<Account> rst = Optional.empty();
+    public Optional<Account> findByRequisite(String passport, String requisite) {
         Optional<User> user = findByPassport(passport);
-        if (user.isPresent()) {
-            users.get(user).stream().filter(u -> u.getRequisite().equals(requisite)).findFirst();
-        }
-        return rst.get();
+        return user.flatMap(value -> users.get(value).stream().filter(u -> u.getRequisite().equals(requisite)).findFirst());
     }
-// return users.get(findByPassport(passport)).stream().filter
-//               (u -> u.getRequisite().equals(requisite)).findFirst().orElse(null);
-
     /**
      * Метод addAccount  реализует интеграцию нового счета к пользователю
      * @param passport - индивидуальный номер
@@ -58,7 +48,7 @@ public class BankService {
     public void addAccount(String passport, Account account) {
         Optional<User> user = findByPassport(passport);
         if (user.isPresent()) {
-            List<Account> accounts = users.get(user);
+            List<Account> accounts = users.get(user.get());
             if (!accounts.contains(account)) {
                 accounts.add(account);
             }
@@ -72,22 +62,17 @@ public class BankService {
      * @param destPassport - уникальный номер счета пополнения
      * @param destRequisite - реквизиты счета пополнения
      * @param amount - количество переводимых средств
-     * @return - результат перевода средств
      */
-    public boolean transferMoney(String srcPassport, String srcRequisite,
-                                 String destPassport, String destRequisite, double amount) {
-        boolean rsl = false;
-       Account srcAccount = findByRequisite(srcPassport, srcRequisite);
-       Account destAccount = findByRequisite(destPassport, destRequisite);
-       if (srcAccount != null && destAccount != null) {
-          if (srcAccount.getBalance() - amount >= 0.00) {
-              srcAccount.setBalance(srcAccount.getBalance() - amount);
-              destAccount.setBalance(destAccount.getBalance() + amount);
-              return true;
-          }
-          return rsl;
-       }
+    public void transferMoney(String srcPassport, String srcRequisite,
+                              String destPassport, String destRequisite, double amount) {
 
-        return rsl;
+       Optional<Account> srcAccount = findByRequisite(srcPassport, srcRequisite);
+       Optional<Account> destAccount = findByRequisite(destPassport, destRequisite);
+       if (srcAccount.isPresent() && destAccount.isPresent()) {
+           if (srcAccount.get().getBalance() - amount >= 0.00) {
+               srcAccount.get().setBalance(srcAccount.get().getBalance() - amount);
+               destAccount.get().setBalance(destAccount.get().getBalance() + amount);
+           }
+       }
     }
 }
