@@ -1,17 +1,12 @@
 package ru.job4j.stream;
 
 import java.util.List;
-import java.util.OptionalDouble;
-import java.util.stream.Collectors;
-import java.util.stream.DoubleStream;
 import java.util.stream.Stream;
 
 public class Analyze {
 
-    public static OptionalDouble averageScore(Stream<Pupil> stream) {
-        List<DoubleStream> sublist = stream.map(pupil -> pupil.getSubjects().stream().mapToDouble(Subject::getScore)).collect(Collectors.toList());
-        OptionalDouble average = sublist.stream().mapToDouble(DoubleStream::sum).average();
-        return average;
+    public static double averageScore(Stream<Pupil> stream) {
+        return stream.flatMap(pupil -> pupil.getSubjects().stream().mapToInt(Subject::getScore).average().orElse(0D));
     }
 
     public static List<Tuple> averageScoreBySubject(Stream<Pupil> stream) {

@@ -15,22 +15,22 @@ public class AnalyzeTest {
 
     @Test
     public void whenSinglePupil() {
-        OptionalDouble average = Analyze.averageScore(
+        double average = Analyze.averageScore(
                 List.of(
                         new Pupil("Ivanov", List.of(new Subject("Math", 100)))
                 ).stream()
         );
-        assertThat(average.getAsDouble(), is(100D));
+        assertThat(average, is(100D));
     }
 
     @Test
     public void whenPupilAverage() {
-        OptionalDouble average = Analyze.averageScore(
+        double average = Analyze.averageScore(
                 List.of(
                         new Pupil("Ivanov", List.of(new Subject("Math", 100))),
                         new Pupil("Petrov", List.of(new Subject("Math", 60)))
                 ).stream()
         );
-        assertThat(average.getAsDouble(), is(80D));
+        assertThat(average, is(80D));
     }
 }
