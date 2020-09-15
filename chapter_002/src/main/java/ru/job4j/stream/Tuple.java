@@ -23,6 +23,14 @@ public class Tuple {
                 Objects.equals(name, tuple.name);
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public double getScore() {
+        return score;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(name, score);

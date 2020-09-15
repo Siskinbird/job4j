@@ -39,6 +39,7 @@ public class Analyze {
                         .average()
                         .getAsDouble())).collect(Collectors.toList());
     }
+
     /**
      * The "averageScoreByPupil" method calculates the average score across all subjects for each student.
      * @param stream - of Pupil objects
@@ -55,11 +56,33 @@ public class Analyze {
                         , stringListEntry.getValue())).collect(Collectors.toList());
     }
 
+    /**
+     * BestStudent method - Returns the best student. The student with the highest score in all subjects is considered the best.
+     * @param stream - of Pupil
+     * @return - Returns a Tuple object (the name of the subject, the sum of each subjects score in this Student)
+     */
     public static Tuple bestStudent(Stream<Pupil> stream) {
-        return null;
+        return stream
+                .map(pupil -> new Tuple(pupil.getName(), pupil
+                        .getSubjects()
+                        .stream()
+                        .mapToInt(Subject::getScore).sum()))
+                        .max(Comparator.comparing(Tuple::getScore)).orElse(null);
     }
 
+    /**
+     * BestSubject - Returns the subject with the highest score for all students.
+     * @param stream - Stream of Pupil
+     * @return -  Returns a Tuple object (the name of the subject, the sum of each student's score in this subject)
+     */
     public static Tuple bestSubject(Stream<Pupil> stream) {
-        return null;
+        return stream
+                .flatMap(pupil -> pupil.getSubjects()
+                        .stream())
+                .collect(Collectors.groupingBy(Subject::getName, LinkedHashMap::new, Collectors.averagingDouble(Subject::getScore)))
+                .entrySet()
+                .stream()
+                .map(stringListEntry -> new Tuple(stringListEntry.getKey()
+                        , stringListEntry.getValue())).max(Comparator.comparing(Tuple::getScore)).orElse(null);
     }
 }
