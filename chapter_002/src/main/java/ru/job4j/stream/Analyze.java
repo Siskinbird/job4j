@@ -1,8 +1,7 @@
 package ru.job4j.stream;
 
 
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -27,8 +26,7 @@ public class Analyze {
     }
 
     /**
-     *
-     The "averageScoreBySubject" method calculates the student's grade point average score.
+     * The "averageScoreBySubject" method calculates the student's grade point average score.
      * @param stream - of Pupil objects
      * @return - Returns a list from a Tuple object (student name and grade point average).
      */
@@ -41,9 +39,20 @@ public class Analyze {
                         .average()
                         .getAsDouble())).collect(Collectors.toList());
     }
-
+    /**
+     * The "averageScoreByPupil" method calculates the average score across all subjects for each student.
+     * @param stream - of Pupil objects
+     * @return - Returns a list from a Tuple object (subject name and grade point average).
+     */
     public static List<Tuple> averageScoreByPupil(Stream<Pupil> stream) {
-        return List.of();
+        return stream
+                .flatMap(pupil -> pupil.getSubjects()
+                        .stream())
+                .collect(Collectors.groupingBy(Subject::getName, LinkedHashMap::new, Collectors.averagingDouble(Subject::getScore)))
+                .entrySet()
+                .stream()
+                .map(stringListEntry -> new Tuple(stringListEntry.getKey()
+                        , stringListEntry.getValue())).collect(Collectors.toList());
     }
 
     public static Tuple bestStudent(Stream<Pupil> stream) {
