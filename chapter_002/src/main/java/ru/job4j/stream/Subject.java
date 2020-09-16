@@ -1,8 +1,5 @@
 package ru.job4j.stream;
 
-/**
- * Class Subject describes the school subject and the student's grades.
- */
 public class Subject {
     private String name;
     private int score;

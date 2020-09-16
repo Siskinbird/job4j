@@ -2,9 +2,6 @@ package ru.job4j.stream;
 
 import java.util.List;
 
-/**
- * Class Pupil describes the student
- */
 public class Pupil {
     private String name;
     private List<Subject> subjects;

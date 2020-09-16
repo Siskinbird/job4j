@@ -2,12 +2,26 @@ package ru.job4j.stream;
 
 import java.util.Objects;
 
-/**
- * The Tuple class contains the results: name and score. This class is used for both students and subjects.
- */
 public class Tuple {
     private String name;
-    private double score;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getScore() {
+        return score;
+    }
+
+    public void setScore(double score) {
+        this.score = score;
+    }
+
+    private double score; // Средний балл ученика/ Предмета
 
     public Tuple(String name, double score) {
         this.name = name;
@@ -21,14 +35,6 @@ public class Tuple {
         Tuple tuple = (Tuple) o;
         return Double.compare(tuple.score, score) == 0 &&
                 Objects.equals(name, tuple.name);
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public double getScore() {
-        return score;
     }
 
     @Override
