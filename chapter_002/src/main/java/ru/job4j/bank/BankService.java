@@ -66,13 +66,13 @@ public class BankService {
     public void transferMoney(String srcPassport, String srcRequisite,
                               String destPassport, String destRequisite, double amount) {
 
-       Optional<Account> srcAccount = findByRequisite(srcPassport, srcRequisite);
-       Optional<Account> destAccount = findByRequisite(destPassport, destRequisite);
-       if (srcAccount.isPresent() && destAccount.isPresent()) {
-           if (srcAccount.get().getBalance() - amount >= 0.00) {
-               srcAccount.get().setBalance(srcAccount.get().getBalance() - amount);
-               destAccount.get().setBalance(destAccount.get().getBalance() + amount);
-           }
-       }
+        Optional<Account> srcAccount = findByRequisite(srcPassport, srcRequisite);
+        Optional<Account> destAccount = findByRequisite(destPassport, destRequisite);
+        if (srcAccount.isPresent() && destAccount.isPresent()) {
+            if (srcAccount.get().getBalance() - amount >= 0.00) {
+                srcAccount.get().setBalance(srcAccount.get().getBalance() - amount);
+                destAccount.get().setBalance(destAccount.get().getBalance() + amount);
+            }
+        }
     }
 }

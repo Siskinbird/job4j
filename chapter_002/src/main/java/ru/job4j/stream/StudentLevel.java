@@ -24,7 +24,7 @@ public class StudentLevel {
                 .collect(Collectors.toList())
                 .stream()
                 .sorted(Comparator.comparing(Student::getScore))
-                .takeWhile(st -> st.getScore() > bound )
+                .takeWhile(st -> st.getScore() > bound)
                 .collect(Collectors.toList());
     }
 }
