@@ -3,19 +3,16 @@ package collection;
 import org.junit.Test;
 import ru.job4j.collection.UniqueText;
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 public class UniqueTextTest {
      /**
      /* Тесты для метода isEquals реализующего проверку текста на идентичность
      * @author Dmitry Chizhov
      * @since 14.07.20
-     * @version 1.01
      */
-    @Test
-    /**
-     * Когда проверяемый текст идентичен
-     */
-    public void isEquals() {
+
+     @Test
+     public void isEquals() {
         String origin = "My cat eats a mouse and milk";
         String text = "My cat eats milk and a mouse";
         assertThat(UniqueText.isEquals(origin, text), is(true));

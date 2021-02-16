@@ -52,8 +52,7 @@ public class Analyze {
                 .collect(Collectors.groupingBy(Subject::getName, LinkedHashMap::new, Collectors.averagingDouble(Subject::getScore)))
                 .entrySet()
                 .stream()
-                .map(stringListEntry -> new Tuple(stringListEntry.getKey()
-                        , stringListEntry.getValue())).collect(Collectors.toList());
+                .map(stringListEntry -> new Tuple(stringListEntry.getKey(), stringListEntry.getValue())).collect(Collectors.toList());
     }
 
     /**
@@ -79,11 +78,9 @@ public class Analyze {
         return stream
                 .flatMap(pupil -> pupil.getSubjects()
                         .stream())
-                .collect(Collectors.groupingBy(Subject::getName
-                        , LinkedHashMap::new, Collectors.summingDouble(Subject::getScore)))
+                .collect(Collectors.groupingBy(Subject::getName, LinkedHashMap::new, Collectors.summingDouble(Subject::getScore)))
                 .entrySet()
                 .stream()
-                .map(stringListEntry -> new Tuple(stringListEntry.getKey()
-                        , stringListEntry.getValue())).max(Comparator.comparing(Tuple::getScore)).orElse(null);
+                .map(stringListEntry -> new Tuple(stringListEntry.getKey(), stringListEntry.getValue())).max(Comparator.comparing(Tuple::getScore)).orElse(null);
     }
 }

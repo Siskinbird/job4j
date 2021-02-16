@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ComparatorTest {
     @Test
@@ -19,7 +19,7 @@ public class ComparatorTest {
                 new Item("Slava"),
                 new Item("Serega")
         );
-        Collections.sort(items, new CompareUp());
+        items.sort(new CompareUp());
         List<Item> expect = Arrays.asList(
                 new Item("Igor"),
                 new Item("Serega"),
@@ -35,7 +35,7 @@ public class ComparatorTest {
                 new Item("Slava"),
                 new Item("Serega")
         );
-        Collections.sort(items, new CompareDown());
+        items.sort(new CompareDown());
         List<Item> expect = Arrays.asList(
                new Item("Slava"),
                new Item("Serega"),

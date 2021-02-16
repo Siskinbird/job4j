@@ -7,7 +7,7 @@ import ru.job4j.list.ConvertMatrix2List;
 import java.util.Arrays;
 import java.util.List;
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ConvertMatrix2ListTest {
     @Test
